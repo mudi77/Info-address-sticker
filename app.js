@@ -49,13 +49,13 @@ app.use('/static', express.static('/public'));
 
 
 //var db = new MongoDB("viet", new Server("127.0.0.1", 27017, {auto_reconnect: true}), {w: 1});
-
+console.log("process.env.MONGODB_URI : " + process.env.MONGODB_URI);
 
 var MONGODB_URI = process.env.MONGODB_URI || process.env.MONGOHQ_URL || "mongodb://localhost", 
     db,
     users;
 
-MongoDB.MongoClient.connect(MONGODB_URI, function (err, database) {
+MongoClient.connect(MONGODB_URI, function (err, database) {
   if (err) throw err;
   db = database;
  // users = db.collection("users");

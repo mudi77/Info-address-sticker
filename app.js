@@ -51,7 +51,7 @@ app.use('/static', express.static('/public'));
 //var db = new MongoDB("viet", new Server("127.0.0.1", 27017, {auto_reconnect: true}), {w: 1});
 
 
-var MONGODB_URI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || "mongodb://localhost", 
+var MONGODB_URI = process.env.MONGODB_URI || process.env.MONGOHQ_URL || "mongodb://localhost", 
     db,
     users;
 

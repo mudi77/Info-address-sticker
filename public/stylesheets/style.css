@@ -1,0 +1,230 @@
+html, body{
+        height: 100%;
+        margin: 0;
+        padding: 0;
+         overflow-x: hidden; 
+  overflow-y: hidden;
+      }
+
+#map{
+    min-height:100%;
+    width:60%;
+    margin:0px;
+     }
+
+.container{
+	position: absolute;
+	width:40%;
+	height: 100%;
+	top:0px;	
+	right:0px;
+	text-align: center;
+	border-left: solid 0.3em #08088A;
+	/*padding:2%;*/
+}
+
+.title{	
+	display: inline-block;
+	height: 13%;
+	width: 100%;
+	background: #A9BCF5;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	/*color: #FF00FF;*/
+	color: #800000;
+}
+
+.table{
+	position: absolute;
+	table-layout: fixed;
+	width:70%;
+	height:60%;
+	top:20%; 
+	left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;	
+    overflow: auto;	
+}
+
+.tableEvanWrapper{
+	width:100%;
+	border: solid 2px red;
+}
+
+.tablescroll
+{ font: 12px normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif; background-color:#fff; margin:3em;}
+
+.tablescroll td, 
+.tablescroll_wrapper,
+.tablescroll_head,
+.tablescroll_foot
+{ border:1px solid #ccc; }
+
+.tablescroll td
+{ padding:3px 5px; }
+
+.tablescroll_wrapper
+{ border-left:0; }
+
+.tablescroll_head
+{ font-size:1.5em; font-weight:bold; background-color:#eee; border-left:0; border-top:solid 2px black; border-bottom:solid 2px black; margin-bottom:0.5em; }
+
+.tablescroll thead td
+{ border-right:0; border-bottom:0; }
+
+.tablescroll tbody td
+{ border-right:0; border-bottom:0; }
+
+.tablescroll tbody tr.first td
+{ border-top:0; }
+
+.tablescroll_foot
+{ font-weight:bold; background-color:#eee; border-left:0; border-top:0; margin-top:3px; }
+
+.tablescroll tfoot td
+{ border-right:0; border-bottom:0; }
+
+.tablescroll tbody tr:hover{
+	background-color: #00FFFF;
+	font-weight:bold;
+}
+.tablescroll tr:nth-child(even) {background: #00FFFF}
+.tableEvan tr:nth-child(odd) {background: #D0D0D0}
+
+/*xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*/
+
+.tableEvanInput{	
+/*	bottom:8%;  */
+}
+.tableEvanInput{
+	position: absolute;	
+	width:100%;	
+	table-layout: fixed;
+	bottom:12%; 
+	left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;	
+    border-collapse: collapse; 
+}
+.tableEvanInput td{
+	width: auto;
+	margin:0px;
+	padding:0.3em; 
+}
+.inputEvan{
+	width: 100%;
+	border-radius: 0.3em;
+}
+td{
+	width: 4em;
+	padding:1em;
+}
+
+.btnMain{
+	width:100%;
+	height:100%;
+	cursor: pointer;
+	border-radius: 1.5em;
+	background: #A0CFEC;
+	border: solid 0.2em #08088A;
+	color: #2A1B0A;
+	font-size:1em; 
+	font-weight: bold;
+}
+
+.btnMain:hover{
+	background: #A9BCF5;
+/*	font-weight: 900;  */
+	font-color: black;
+}
+.btnMain:focus{
+	outline:0;	
+}
+
+.btnBack{
+	position: absolute;
+	width:36%;
+	height:8%;
+	bottom:1%;
+	left:32%;	
+	cursor: pointer;	
+/*	background: #9E7BFF; 
+	background-image: url("/images/bck.png") no-repeat scroll 0 0 transparent;*/	
+	background: url('/images/home.png') no-repeat;
+	background-size: 60px 40px;
+	background-position: 50% 50%;
+	color: #2A1B0A;
+	font-size:1em; 
+	font-weight: bold;
+	border-radius: 1em;
+/*	border:solid 0.3em #9E7BFF; */
+border:solid 0.2em black;
+}
+.btnBack:hover{
+	background-color: #A9BCF5; 
+	font-weight: 900;
+	font-color: black;
+	border:double 2px white;
+}
+.btnBack:focus{
+	outline:0;	
+}
+.btnSubmit{
+	width:100%;
+	height:100%;
+	cursor: pointer;
+	border-radius: 0.3em;
+	background: #CEE3F6;
+	border: solid 0.1em #08088A;
+	color: #2A1B0A;
+	font-size:1em; 
+	font-weight: bold;
+}
+.btnSubmit:hover{
+	background: #A9BCF5;
+/*	font-weight: 900; */
+	font-color: black;
+}
+.btnSubmit:focus{
+	outline:0;	
+}
+.assgnButton{
+	border: none;
+    color: white;
+   background-color: red;
+    text-align: center;
+
+}
+#info{
+	position: absolute;
+	width: 60%;
+	height: 30%;
+	bottom:0px;
+	left:0px;
+	background-color: grey;
+}
+.pswdInput{
+	width:5em;
+}
+
+.pokynyTable{
+	position: absolute;
+	margin:5%;
+	width:90%;
+	height:50%;
+	font: 1em normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-align: justify;
+}
+.pokynyTable td{
+	padding:0.5em;
+}
+
+.appver{
+	position:absolute;
+	bottom:10px;
+	right:20px;
+	width:20px;
+	height:10px;
+	font: 0.7em normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

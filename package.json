@@ -1,0 +1,16 @@
+{
+  "name": "viet",
+  "version": "1.0.0",
+  "description": "vietnamska aktivita",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "igor collak",
+  "license": "ISC",
+  "dependencies" : {
+  	"hjs": "0.0.4",
+  	"less-middleware": "0.1.12",
+    "mongodb": "1.3.10"
+  }
+}

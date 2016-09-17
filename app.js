@@ -45,8 +45,9 @@ app.use('/static', express.static('/public'));
 		});
 // 	}
 // });
+var uri = process.env.MONGOLAB_URI;
 
-var db = new MongoDB("viet", new Server("127.0.0.1", 27017, {auto_reconnect: true}), {w: 1});
+var db = new MongoDB(uri, new Server("127.0.0.1", 27017, {auto_reconnect: true}), {w: 1});
 // db.open(function(e, d){
 // 	if(e){
 // 		console.log(e);

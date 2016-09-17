@@ -2,8 +2,9 @@ var http = require('http');
 var express = require('express');
 var app = express();
 var path = require('path');
-//var MongoClient = require('mongodb').MongoClient;
-var MongoDB	= require('mongodb').Db;
+var MongoClient = require('mongodb').MongoClient;
+//var MongoDB	= require('mongodb').Db;
+var MongoDB	= require('mongodb');
 var Server = require('mongodb').Server;
 
 //var viet = require('./controllers/viet');
@@ -45,9 +46,26 @@ app.use('/static', express.static('/public'));
 		});
 // 	}
 // });
-var uri = process.env.MONGOLAB_URI;
 
-var db = new MongoDB("viet", new Server(viet, 27017, {auto_reconnect: true}), {w: 1});
+
+//var db = new MongoDB("viet", new Server("127.0.0.1", 27017, {auto_reconnect: true}), {w: 1});
+
+
+var MONGODB_URI = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || "mongodb://localhost", 
+    db,
+    users;
+
+MongoDB.MongoClient.connect(MONGODB_URI, function (err, database) {
+  if (err) throw err;
+  db = database;
+ // users = db.collection("users");
+ // accounts = db.collection("accounts");
+//  var server = app.listen(process.env.PORT || 3000);
+  console.log("db started");
+});
+
+
+
 // db.open(function(e, d){
 // 	if(e){
 // 		console.log(e);

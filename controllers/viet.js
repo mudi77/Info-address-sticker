@@ -5,18 +5,18 @@ var pjson = require("../package.json");
 
 var cordDATA = coordinates.getData();
 var db = application.getDB();
-db.open(function(e, d){
-	if(e){
-		console.log(e);
-	}else{		
-		console.log('mongo :: connected to database: viet');	
+// db.open(function(e, d){
+// 	if(e){
+// 		console.log(e);
+// 	}else{		
+// 		console.log('mongo :: connected to database: viet');	
 
-// db.collection('coordinates').insert(coordinates.getData(), {}, function(){
-// 		console.log("db insert OK");
-//  	});
+// // db.collection('coordinates').insert(coordinates.getData(), {}, function(){
+// // 		console.log("db insert OK");
+// //  	});
 
-		}	
-});
+// 		}	
+// });
 
 module.exports = {
  

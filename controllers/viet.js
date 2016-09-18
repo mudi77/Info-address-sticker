@@ -79,10 +79,10 @@ module.exports = {
 				});	
 //console.log(" outside find " + data.length);
 			}else if(req.query.action === "assign"){
-				console.log(req.query.date);
+		//		console.log(req.query.date);
 					var user = JSON.parse(req.query.user);
 					var blockName = "Obvod_" + req.query.blockID;
-					console.log(" user : " + user.name + " blockID " + blockName);
+		//			console.log(" user : " + user.name + " blockID " + blockName);
 					db.collection('coordinates').update({name: blockName}, {$set: {assigned_to : user.name, spec1 : req.query.date}}, function(){
 						res.status(200).send("OK");
 					});										

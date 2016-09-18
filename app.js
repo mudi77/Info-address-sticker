@@ -95,7 +95,7 @@ module.exports.getDB = function(){
 
 var viet = require('./controllers/viet');
 
-app.get('/viet-akt.herokuapp.com', function(req, res){
+app.get('/', function(req, res){
 	
 		//res.render('home', { title: 'Vietnamská aktivita' });
 		//console.log("GET : home..");

@@ -50,8 +50,9 @@ app.use('/static', express.static('/public'));
 
 //var db = new MongoDB("viet", new Server("127.0.0.1", 27017, {auto_reconnect: true}), {w: 1});
 console.log("process.env.MONGODB_URI : " + process.env.MONGODB_URI);
+//console.log("db version ::: " + MongoDB.version())
 
-var MONGODB_URI = process.env.MONGODB_URI || process.env.MONGOHQ_URL || "mongodb://localhost", 
+var MONGODB_URI = "mongodb://igor:Lienocka1@ds033976.mlab.com:33976/heroku_cn0nx3mh", 
     db,
     users;
 

@@ -192,9 +192,9 @@ if(MENU.status){
 												date = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
 													 $.ajax({
                 	 								 type: 'POST',
-                	 								 url: "/?action=assign&user=" + userData[0] + "&blockID=" + blockID + "&date=" + date,
+                	 								 url: "/?action=assign&user=" + JSON.stringify(userData[0]) + "&blockID=" + blockID + "&date=" + date,
                 	 						//		 data: userData,
-                	 								 dataType: "json",
+                	 						//		 dataType: "json",
                 	 								 success: function(){
                 									 	console.log("sent");   
                 									 	            		

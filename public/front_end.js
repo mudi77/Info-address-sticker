@@ -98,7 +98,7 @@ var MENU = {
 if(MENU.status){
 	MENU.status = false;
         $.ajax({
-            url: '/viet?action=getBlocks',
+            url: '/?action=getBlocks',
             type: 'get',
             dataType: 'json',
             success: function(blockData){        
@@ -174,7 +174,7 @@ if(MENU.status){
  									if(this.value.indexOf(tempUser.substring(0, 3)) != -1){
  							
  									$.ajax({
-            							url: '/viet?action=getUser&usrpwd=' + this.value,
+            							url: '/?action=getUser&usrpwd=' + this.value,
             							type: 'get',
             							dataType: 'json',
             							success: function(userData){            								
@@ -192,7 +192,7 @@ if(MENU.status){
 												date = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
 													 $.ajax({
                 	 								 type: 'POST',
-                	 								 url: "/viet?action=assign&user=" + JSON.stringify(userData[0]) + "&blockID=" + blockID + "&date=" + date,
+                	 								 url: "/?action=assign&user=" + JSON.stringify(userData[0]) + "&blockID=" + blockID + "&date=" + date,
                 	 						//		 data: userData,
                 	 								 dataType: "json",
                 	 								 success: function(){
@@ -248,7 +248,7 @@ var tableWrapper = document.createElement("div");
 		table1.innerHTML = "<thead><tr><th>MENO</th><th>EMAIL</th><th>ZBOR</th></tr></thead>";
 
 		$.ajax({
-            url: '/viet?action=getEvangelists',
+            url: '/?action=getEvangelists',
             type: 'get',
             dataType: 'json',
             success: function(data){        
@@ -300,7 +300,7 @@ var tableWrapper = document.createElement("div");
 		//		 		MENU.flagInsert = false;
 							 $.ajax({
 			                	 type: 'POST',
-			                	 url: "/viet?action=insert&n="+dataUser[0]+"&e="+dataUser[1]+"&z="+dataUser[2]+"&h="+dataUser[3],
+			                	 url: "/?action=insert&n="+dataUser[0]+"&e="+dataUser[1]+"&z="+dataUser[2]+"&h="+dataUser[3],
 			                	 data: dataUser,        
 			                	 success: function() {
 			                			  console.log("sent");
@@ -354,20 +354,20 @@ var tableWrapper = document.createElement("div");
 		var container = document.getElementById("container")
 			container.innerHTML ="<span class='title'><h1>Pokyny</h1></span><button class='btnBack' id='btnBack'></button>";
 		
-		var uvod = "<strong>Vietnamska aktivita</strong> - velka prilezitost najst milych ludi, ktori su ochotni pocuvat biblicku pravdu !";
+		var uvod = "<strong>Vietnamska aktivita</strong> - velka prilezitost najst milych ludi, ktori su ochotni pocuvat biblicku pravdu :)";
 		
 		var obvody = "<strong>Obvody</strong> - je tu 80 obvodov ide o prve rozdelenie obvodov mozno sa casom ukaze ze bude treba niektore rozdelit "
 				   + "alebo spojit myslienka bola taka aby v ramci obvodu bolo priblizne rovnaky pocet bytov, niektore obvody su aj v priemyselnych "
 				   + "alebo okrajovych castiach Kosic. Hranice obvodov by mali byt v zhode s ulicami avsak nie kazdy obvod je tak ohraniceny.. "
 				   + "Kedze je potrebne prepracovat cele Kosice vyberajte obvody mestske aj tie odlahle.. ";
 
-		var zvestovatelia = "<strong>Zvestovatelia</strong> - do tejto aktivity sa moze zapojit pokrsteny zvestovatel ktory ma zaujem sa podielat vo vyhladavacej sluzbe, "
+		var zvestovatelia = "<strong>Zvestovatelia</strong> - do tejto aktivity sa moze zapojit pokrsteny zvestovatel ktory ma seriozny zaujem sa podielat vo vyhladavacej sluzbe, "
 						  +	"a ucit sa vietnamsky jazyk.. Skor ako sa prihlasite o obvod zaregistrujte sa v casti 'Zvestovatelia' zadajte heslo s apon 6 znakmi";
 
 		var vyhladavanie = "<strong>Vyhladavacia sluzba</strong> - ";				  
 
 		var app_info = "<strong>Aplikacia</strong> - sluzi na organizovanie vietnamskej aktivity pre zdielanie a ukladanie informacii"
-				   	 + " ide o prvu verziu casom budu doplnene ostatne casti.. je to optimalizovane pre PC nie mobilne zariadenia";
+				   	 + " ide o prvu verziu (zaregistrovanie, pridelenie obvodu) casom budu doplnene ostatne casti.. je to optimalizovane pre PC nie mobilne zariadenia";
 
 		var content = "<table class='pokynyTable'><tr><td>"+uvod+"</td></tr><tr><td>"+obvody+"</td></tr>"
 					+ "<tr><td>"+zvestovatelia+"</td></tr><tr><td>"+vyhladavanie+"</td></tr>"

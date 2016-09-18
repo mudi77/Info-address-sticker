@@ -96,7 +96,7 @@ module.exports.getDB = function(){
 
 var viet = require('./controllers/viet');
 
-app.get('/viet', function(req, res){
+app.get('/', function(req, res){
 	
 		//res.render('home', { title: 'Vietnamská aktivita' });
 		//console.log("GET : home..");
@@ -104,7 +104,7 @@ app.get('/viet', function(req, res){
 		viet.run(req, res);
 		
 	});
-app.post('/viet', function(req, res){
+app.post('/', function(req, res){
 	
 		//res.render('home', { title: 'Vietnamská aktivita' });
 		//console.log("GET : home..");

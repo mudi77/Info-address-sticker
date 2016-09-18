@@ -95,7 +95,7 @@ var MENU = {
 	flagInsert : true,
 	obvody : (function(){
 		BUTTONS.btnObv.addEventListener("click", function(){
-if(MENU.status){
+ if(MENU.status){
 	MENU.status = false;
         $.ajax({
             url: '/?action=getBlocks',
@@ -106,8 +106,7 @@ if(MENU.status){
                 for(var i = 0; i<blockData.length; i++){ 
                     var cordLength = (Object.keys(blockData[i]).length -7) / 2;
                     	name = blockData[i].name;  
-                    	if(blockData[i].assigned_to === ""){
-            console.log(" assignment status " + blockData[i].assigned_to);        		
+                    	if(blockData[i].assigned_to === ""){          		
 							assignment = "neprideleny";
 							color = "#46C646";
 							date = "";
@@ -284,9 +283,9 @@ var tableWrapper = document.createElement("div");
 			var table2 = document.createElement("table");
 			table2.setAttribute("id", "tableEvanInput");
 			table2.setAttribute("class", "tableEvanInput");
-			table2.innerHTML += "<tr><td><input class='inputEvan' placeholder='Meno'>"
-			+ "</td><td><input class='inputEvan' placeholder='Email'></td><td>"
-			+ "<input class='inputEvan' placeholder='Zbor'></td><td><input class='inputEvan' type='password' placeholder='Heslo'>"
+			table2.innerHTML += "<tr><td><input class='inputEvan' type='text' autocorrect='off' placeholder='Meno'>"
+			+ "</td><td><input class='inputEvan' type='email' autocorrect='off' placeholder='Email'></td><td>"
+			+ "<input class='inputEvan' type='text' autocorrect='off' placeholder='Zbor'></td><td><input class='inputEvan' type='password' autocorrect='off' placeholder='Heslo'>"
 			+ "</td><td id='btnholder'></td></tr>"; 
 
 			var btnSubmit = document.createElement("button");

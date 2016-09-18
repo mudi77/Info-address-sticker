@@ -1,3 +1,7 @@
+@media all and (orientation:landscape)
+{
+
+
 html, body{
         height: 100%;
         margin: 0;
@@ -31,6 +35,10 @@ html, body{
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	/*color: #FF00FF;*/
 	color: #800000;
+	
+}
+.title h1{
+	font-size: 2.3vw;
 }
 
 .table{
@@ -129,7 +137,7 @@ td{
 	background: #A0CFEC;
 	border: solid 0.2em #08088A;
 	color: #2A1B0A;
-	font-size:1em; 
+	font-size: 1.3vw;
 	font-weight: bold;
 }
 
@@ -209,12 +217,15 @@ border:solid 0.2em black;
 }
 
 .pokynyTable{
-	position: absolute;
+	position: absolute;  
 	margin:5%;
 	width:90%;
-	height:50%;
+	height:70%;
 	font: 1em normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	text-align: justify;
+/*	margin-bottom: 15%;  */
+	font-size: 1.2vw;
+/*	border: solid 1px black;  */
 }
 .pokynyTable td{
 	padding:0.5em;
@@ -227,4 +238,7 @@ border:solid 0.2em black;
 	width:20px;
 	height:10px;
 	font: 0.7em normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
 }

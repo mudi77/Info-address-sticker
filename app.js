@@ -52,7 +52,7 @@ app.use('/static', express.static('/public'));
 console.log("process.env.MONGODB_URI : " + process.env.MONGODB_URI);
 //console.log("db version ::: " + MongoDB.version())
 
-var MONGODB_URI = "mongodb://igor:Lienocka1@ds033976.mlab.com:33976/heroku_cn0nx3mh", 
+var MONGODB_URI = "mongodb://igor:Lienocka1@127.0.0.1:47775/heroku_cn0nx3mh", 
     db,
     users;
 

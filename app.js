@@ -99,6 +99,7 @@ app.get('/viet-akt.herokuapp.com', function(req, res){
 	
 		//res.render('home', { title: 'Vietnamská aktivita' });
 		//console.log("GET : home..");
+		res.send('Hello');
 		viet.run(req, res);
 		
 	});

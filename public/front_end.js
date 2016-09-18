@@ -196,7 +196,7 @@ if(MENU.status){
                 	 						//		 data: userData,
                 	 								 dataType: "json",
                 	 								 success: function(){
-                									 	console.log("sent" + this);   
+                									 	console.log("sent");   
                 									 	            		
                													},
                										 error: function(XMLHttpRequest, textStatus, errorThrown){
@@ -354,8 +354,9 @@ var tableWrapper = document.createElement("div");
 		var container = document.getElementById("container")
 			container.innerHTML ="<span class='title'><h1>Pokyny</h1></span><button class='btnBack' id='btnBack'></button>";
 		
-		var uvod = "<strong>Vietnamska aktivita</strong> - velka prilezitost najst milych ludi, ktori su ochotni pocuvat biblicku pravdu :)";
-		
+		var uvod = "<strong>Vietnamska aktivita</strong> - velka prilezitost najst milych ludi, ktori su ochotni pocuvat biblicku pravdu :) + ucast"
+				 + " na zaujimavej a viac povzbudzujucej forme sluzby";
+
 		var obvody = "<strong>Obvody</strong> - je tu 80 obvodov ide o prve rozdelenie obvodov mozno sa casom ukaze ze bude treba niektore rozdelit "
 				   + "alebo spojit myslienka bola taka aby v ramci obvodu bolo priblizne rovnaky pocet bytov, niektore obvody su aj v priemyselnych "
 				   + "alebo okrajovych castiach Kosic. Hranice obvodov by mali byt v zhode s ulicami avsak nie kazdy obvod je tak ohraniceny.. "

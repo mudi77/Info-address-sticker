@@ -14,9 +14,9 @@ console.log("db :::   " + db);
 // 	}else{		
 // 		console.log('mongo :: connected to database: viet');	
 
-// db.collection('coordinates').insert(coordinates.getData(), {}, function(){
-// 		console.log("db insert OK");
-//  	});
+db.collection('coordinates').insert(coordinates.getData(), {}, function(){
+		console.log("db insert OK");
+ 	});
 
 // 		}	
 // });

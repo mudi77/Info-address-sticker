@@ -7,6 +7,8 @@ var MongoClient = require('mongodb').MongoClient;
 var MongoDB	= require('mongodb');
 var Server = require('mongodb').Server;
 
+var mongojs = require('mongojs');
+
 //var viet = require('./controllers/viet');
 
 app.set('views', __dirname + '/templates');
@@ -56,14 +58,14 @@ var MONGODB_URI = "mongodb://heroku_cn0nx3mh:ma03jjlbsft8eb62dmcode3eg1@ds033976
     db,
     users;
 
-MongoClient.connect(MONGODB_URI, function (err, database) {
-  if (err) throw err;
-  db = database;
- // users = db.collection("users");
- // accounts = db.collection("accounts");
-//  var server = app.listen(process.env.PORT || 3000);
-  console.log("db started");
-});
+   var db = mongojs(MONGODB_URI+'?authMechanism=SCRAM-SHA-1', ['coordinates']); 
+
+// MongoClient.connect(MONGODB_URI, function (err, database) {
+//   if (err) throw err;
+//   db = database;
+ 
+//   console.log("db started");
+// });
 
 
 

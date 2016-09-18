@@ -43,7 +43,7 @@ app.use('/static', express.static('/public'));
 		// });
 
 
-		http.createServer(app).listen(8080, function() {
+		http.createServer(app).listen(process.env.PORT || 8080, function() {
 		  console.log("nodeJs SERVER started..");
 		});
 // 	}

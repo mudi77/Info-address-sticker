@@ -107,6 +107,7 @@ if(MENU.status){
                     var cordLength = (Object.keys(blockData[i]).length -7) / 2;
                     	name = blockData[i].name;  
                     	if(blockData[i].assigned_to === ""){
+            console.log(" assignment status " + blockData[i].assigned_to);        		
 							assignment = "neprideleny";
 							color = "#46C646";
 							date = "";

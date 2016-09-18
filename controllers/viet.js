@@ -5,6 +5,9 @@ var pjson = require("../package.json");
 
 var cordDATA = coordinates.getData();
 var db = application.getDB();
+
+console.log("db :::   " + db);
+
 // db.open(function(e, d){
 // 	if(e){
 // 		console.log(e);

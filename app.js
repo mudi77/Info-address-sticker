@@ -58,7 +58,7 @@ var MONGODB_URI = "mongodb://heroku_cn0nx3mh:ma03jjlbsft8eb62dmcode3eg1@ds033976
     db,
     users;
 
-   var db = mongojs(MONGODB_URI+'?authMechanism=SCRAM-SHA-1', ['coordinates']); 
+ //  var db = mongojs(MONGODB_URI+'?authMechanism=SCRAM-SHA-1', ['coordinates']); 
 
 // MongoClient.connect(MONGODB_URI, function (err, database) {
 //   if (err) throw err;
@@ -78,9 +78,10 @@ var MONGODB_URI = "mongodb://heroku_cn0nx3mh:ma03jjlbsft8eb62dmcode3eg1@ds033976
 // 		}	
 // });
 
+console.log("db from app ::: " + db);
 
 module.exports.getDB = function(){
-	return db;
+	return mongojs(MONGODB_URI+'?authMechanism=SCRAM-SHA-1', ['coordinates']);
 };
 
 // function runBlock(){
@@ -95,11 +96,11 @@ module.exports.getDB = function(){
 
 var viet = require('./controllers/viet');
 
-app.get('/', function(req, res){
+app.get('/viet', function(req, res){
 	
 		//res.render('home', { title: 'Vietnamská aktivita' });
 		//console.log("GET : home..");
-		res.send('Hello');
+	//	res.send('Hello');
 		viet.run(req, res);
 		
 	});

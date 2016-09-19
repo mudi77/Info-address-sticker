@@ -289,8 +289,8 @@ var tableWrapper = document.createElement("div");
 			+ "</td><td id='btnholder'></td></tr>"; 
 
 			var btnSubmit = document.createElement("button");
-			btnSubmit.setAttribute("class", "btnSubmit");
-			btnSubmit.innerText = "PRIDAT";
+			btnSubmit.setAttribute("class", "btnSubmit");			
+			btnSubmit.innerHTML = "PRIDAT";
 			function addUser(){
 					var dataUser = [], nodes = this.parentElement.parentElement.childNodes;		
 					for(var i=0; i<nodes.length; i++){				
@@ -351,9 +351,12 @@ var tableWrapper = document.createElement("div");
 	pokyny : (function(){
 			BUTTONS.btnPokn.addEventListener("click", function(){	
 
-		var container = document.getElementById("container")
+		var container = document.getElementById("container");
 			container.innerHTML ="<span class='title'><h1>Pokyny</h1></span><button class='btnBack' id='btnBack'></button>";
 		
+		var pokynyTableWrapper = document.createElement("div");	
+			pokynyTableWrapper.className = "pokynyTableWrapper";
+
 		var uvod = "<strong>Vietnamska aktivita</strong> - velka prilezitost najst milych ludi, ktori su ochotni pocuvat biblicku pravdu :) + ucast"
 				 + " na zaujimavej a viac povzbudzujucej forme sluzby";
 
@@ -373,7 +376,8 @@ var tableWrapper = document.createElement("div");
 		var content = "<table class='pokynyTable'><tr><td>"+uvod+"</td></tr><tr><td>"+obvody+"</td></tr>"
 					+ "<tr><td>"+zvestovatelia+"</td></tr><tr><td>"+vyhladavanie+"</td></tr>"
 					+ "<tr><td>"+app_info+"</td></tr></table>";		
-		container.innerHTML += content;			
+		pokynyTableWrapper.innerHTML = content;
+		container.appendChild(pokynyTableWrapper);			
 
 		MENU.back(container);
  	}, false);

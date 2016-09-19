@@ -257,7 +257,7 @@ border:solid 0.2em black;
 
 }
 
-@media all and (max-device-width: 400px) {
+@media all and (max-device-height: 799px) {
 
 
 .container{

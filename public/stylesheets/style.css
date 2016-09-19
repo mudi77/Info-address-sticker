@@ -261,15 +261,7 @@ border:solid 0.2em black;
 
 @media screen and (min-width : 768px) and (max-width : 1024px) {
 
-html, body{
-	    position: relative;
-        height: 100%;
-        width:100%;
-        margin: 0;
-        padding: 0;
-         overflow-x: hidden; 
-  overflow-y: hidden;
-      }
+
 
 .container{
 	position: absolute;

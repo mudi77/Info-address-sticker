@@ -1,5 +1,4 @@
-@media all and (orientation:landscape)
-{
+
 
 html, body{
         height: 100%;
@@ -257,7 +256,9 @@ border:solid 0.2em black;
 }
 
 }
-@media all and (orientation:portrait){
+
+@media all and (max-device-width: 400px) {
+
 
 .container{
 	position: absolute;

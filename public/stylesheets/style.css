@@ -288,6 +288,14 @@ html, body{
 	z-index: 1000;
 }
 
+      #map{
+    min-height:0%;
+    width:0%;
+    margin:0px;
+    z-index: 0;
+     }
+
+
 .title{	
 	display: inline-block;
 	height: 13%;
@@ -298,6 +306,18 @@ html, body{
 /*	color: #800000;  */
 z-index: 0;
 	
+}
+
+.btnMain{
+	width:0%;
+	
+	
+	
+	
+	
+	
+		
+	z-index: 0;
 }
 
 

@@ -263,7 +263,7 @@ border:solid 0.2em black;
 
 
 .container{
-	position: absolute;
+	position: relative;
 	width:100%;
 	height: 100%;
 	top:0px;	
@@ -274,8 +274,22 @@ border:solid 0.2em black;
 	z-index: 1000;
 	background-color: black;
 	background: url('/images/rotate-device.png') no-repeat;
-	background-size: 55% 60%;
+	background-size: 60% 40%;
 	background-position: 50% 50%;
+	z-index: 1000;
 }
+
+.title{	
+	display: inline-block;
+	height: 13%;
+	width: 100%;
+	background: #A9BCF5;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #FF00FF;
+/*	color: #800000;  */
+z-index: 0;
+	
+}
+
 
 }

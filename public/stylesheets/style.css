@@ -277,10 +277,7 @@ html, body{
 	height: 100%;
 	top:0px;	
 	right:0px;
-	/*text-align: center;
-	border-left: solid 0.3em #08088A;
-	padding:2%;*/
-	z-index: 1000;
+
 	background-color: black;
 	background: url('/images/rotate-device.png') no-repeat;
 	background-size: 60% 40%;
@@ -289,6 +286,7 @@ html, body{
 }
 
       #map{
+
     min-height:0%;
     width:0%;
     margin:0px;
@@ -297,26 +295,19 @@ html, body{
 
 
 .title{	
-	display: inline-block;
-	height: 13%;
-	width: 100%;
-	background: #A9BCF5;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	color: #FF00FF;
+	position: relative;
+	
+	height: 0%;
+	width: 0%;	
+	
 /*	color: #800000;  */
 z-index: 0;
 	
 }
 
 .btnMain{
-	width:0%;
-	
-	
-	
-	
-	
-	
-		
+	position: relative;
+	width:0%;		
 	z-index: 0;
 }
 

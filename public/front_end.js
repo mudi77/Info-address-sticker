@@ -1,7 +1,10 @@
 function table(){
 
-var thisWidth = parseInt(screen.width * 0.34);
-var thisHeight = parseInt(screen.height * 0.4); 
+var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+var height = window.innerHeight || document.documentElement.clientHeight  || document.body.clientHeight;
+
+var thisWidth = parseInt(width * 0.34);
+var thisHeight = parseInt(height * 0.4); 
 
 $('#tableViet').tableScroll({width:thisWidth,height:thisHeight});
 }

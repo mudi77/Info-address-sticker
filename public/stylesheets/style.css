@@ -261,7 +261,7 @@ border:solid 0.2em black;
 			right:0px;
 			z-index: 1000;			
 			background: url('/images/rotate-device.png') no-repeat;
-			background-size: 30% 55%;
+			background-size: 55% 30%;
 			background-position: 50% 50%;
 			background-color: black;
 		}

@@ -257,11 +257,11 @@ var tableWrapper = document.createElement("div");
                 		var tr = document.createElement("tr");
                 		i === 0 ? tr.className ="first" : false;
                 		var td1 = document.createElement("td");                		
-                		td1.innerText = data[i].name;
+                		td1.innerHTML = data[i].name;
                 		var td2 = document.createElement("td");
-                		td2.innerText = data[i].email;
+                		td2.innerHTML = data[i].email;
                 		var td3 = document.createElement("td");
-                		td3.innerText = data[i].cong;
+                		td3.innerHTML = data[i].cong;
                 		tr.appendChild(td1);
                 		tr.appendChild(td2);
                 		tr.appendChild(td3);
@@ -321,7 +321,7 @@ var tableWrapper = document.createElement("div");
 			document.getElementById("btnholder").appendChild(btnSubmit);
 
 			var music = document.createElement("div");
-				music.innerHTML = "<audio id='msc' name='myMusic' loop='false' hidden='true' src='jmje.ogg'></audio>";
+				music.innerHTML = "<audio id='msc' name='myMusic' loop='false' hidden='true' src='/multimedia/jmje.ogg'></audio>";
 			container.appendChild(music);
 
 		MENU.back(container);
@@ -357,21 +357,21 @@ var tableWrapper = document.createElement("div");
 		var pokynyTableWrapper = document.createElement("div");	
 			pokynyTableWrapper.className = "pokynyTableWrapper";
 
-		var uvod = "<strong>Vietnamska aktivita</strong> - velka prilezitost najst milych ludi, ktori su ochotni pocuvat biblicku pravdu :) + ucast"
-				 + " na zaujimavej a viac povzbudzujucej forme sluzby";
+		var uvod = "<h2><strong>Vietnamska aktivita</strong> - velka prilezitost najst milych ludi, ktori su ochotni pocuvat biblicku pravdu :) + ucast"
+				 + " na zaujimavej a viac povzbudzujucej forme sluzby</h2>";
 
-		var obvody = "<strong>Obvody</strong> - je tu 80 obvodov ide o prve rozdelenie obvodov mozno sa casom ukaze ze bude treba niektore rozdelit "
+		var obvody = "<h2><strong>Obvody</strong> - je tu 80 obvodov ide o prve rozdelenie obvodov mozno sa casom ukaze ze bude treba niektore rozdelit "
 				   + "alebo spojit myslienka bola taka aby v ramci obvodu bolo priblizne rovnaky pocet bytov, niektore obvody su aj v priemyselnych "
 				   + "alebo okrajovych castiach Kosic. Hranice obvodov by mali byt v zhode s ulicami avsak nie kazdy obvod je tak ohraniceny.. "
-				   + "Kedze je potrebne prepracovat cele Kosice vyberajte obvody mestske aj tie odlahle.. ";
+				   + "Kedze je potrebne prepracovat cele Kosice vyberajte obvody mestske aj tie odlahle.. </h2>";
 
-		var zvestovatelia = "<strong>Zvestovatelia</strong> - do tejto aktivity sa moze zapojit pokrsteny zvestovatel ktory ma seriozny zaujem sa podielat vo vyhladavacej sluzbe, "
-						  +	"a ucit sa vietnamsky jazyk.. Skor ako sa prihlasite o obvod zaregistrujte sa v casti 'Zvestovatelia' zadajte heslo s apon 6 znakmi";
+		var zvestovatelia = "<h2><strong>Zvestovatelia</strong> - do tejto aktivity sa moze zapojit pokrsteny zvestovatel ktory ma seriozny zaujem sa podielat vo vyhladavacej sluzbe, "
+						  +	"a ucit sa vietnamsky jazyk.. Skor ako sa prihlasite o obvod zaregistrujte sa v casti 'Zvestovatelia' zadajte heslo s apon 6 znakmi</h2>";
 
-		var vyhladavanie = "<strong>Vyhladavacia sluzba</strong> - ";				  
+		var vyhladavanie = "<h2><strong>Vyhladavacia sluzba</strong> - </h2>";				  
 
-		var app_info = "<strong>Aplikacia</strong> - sluzi na organizovanie vietnamskej aktivity pre zdielanie a ukladanie informacii"
-				   	 + " ide o prvu verziu (zaregistrovanie, pridelenie obvodu) casom budu doplnene ostatne casti.. je to optimalizovane pre PC nie mobilne zariadenia";
+		var app_info = "<h2><strong>Aplikacia</strong> - sluzi na organizovanie vietnamskej aktivity pre zdielanie a ukladanie informacii"
+				   	 + " ide o prvu verziu (zaregistrovanie, pridelenie obvodu) casom budu doplnene ostatne casti.. je to optimalizovane pre PC nie mobilne zariadenia</h2>";
 
 		var content = "<table class='pokynyTable'><tr><td>"+uvod+"</td></tr><tr><td>"+obvody+"</td></tr>"
 					+ "<tr><td>"+zvestovatelia+"</td></tr><tr><td>"+vyhladavanie+"</td></tr>"

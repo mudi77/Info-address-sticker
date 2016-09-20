@@ -6,20 +6,11 @@ var pjson = require("../package.json");
 var cordDATA = coordinates.getData();
 var db = application.getDB();
 
-console.log("db :::   " + db);
-
-// db.open(function(e, d){
-// 	if(e){
-// 		console.log(e);
-// 	}else{		
-// 		console.log('mongo :: connected to database: viet');	
+console.log("connected to db ::: " + db);
 
 // db.collection('coordinates').insert(coordinates.getData(), {}, function(){
 // 		console.log("db insert OK");
 //  	});
-
-// 		}	
-// });
 
 module.exports = {
  
@@ -58,17 +49,8 @@ module.exports = {
 			}
 				this.insert = req.query.n;
 			}else if(req.query.action === "getUser"){
-
-				// function asynGet(callback, query) {		
-				// 	db.collection('evangelists').find(query).toArray(callback);
-				// }				
-				  var usr = req.query.usrpwd;
-
-				// asynGet(function(err, records){						
-				// 		if(records.length == 1){
-				// 			res.send(records);	
-				// 			}
-				// 	}, {pass: new RegExp(usr, 'i')});
+							
+				var usr = req.query.usrpwd;				
 
 				db.collection('evangelists').find({pass: new RegExp(usr, 'i')}).toArray(function(err, records){				
 					console.log("user.. FOUND..." + records.length);
@@ -77,12 +59,10 @@ module.exports = {
 							records = false;	
 							}else{records = false;}	
 				});	
-//console.log(" outside find " + data.length);
-			}else if(req.query.action === "assign"){
-		//		console.log(req.query.date);
+
+			}else if(req.query.action === "assign"){	
 					var user = JSON.parse(req.query.user);
-					var blockName = "Obvod_" + req.query.blockID;
-		//			console.log(" user : " + user.name + " blockID " + blockName);
+					var blockName = "Obvod_" + req.query.blockID;		
 					db.collection('coordinates').update({name: blockName}, {$set: {assigned_to : user.name, spec1 : req.query.date}}, function(){
 						res.status(200).send("OK");
 					});										
@@ -101,9 +81,7 @@ module.exports = {
 				}
 				console.log(location + " " + title);
 				var v = new View(res, location);
-				v.render({ title: title, ver: pjson.version, layout: false });
-				//res.render(location, { title: title });
-		//callback();		
+				v.render({ title: title, ver: pjson.version, layout: false });	
 	}
 
 }

@@ -54,7 +54,7 @@ app.use('/static', express.static('/public'));
 console.log("process.env.MONGODB_URI : " + process.env.MONGODB_URI);
 //console.log("db version ::: " + MongoDB.version())
 
-var MONGODB_URI = "mongodb://heroku_cn0nx3mh:ma03jjlbsft8eb62dmcode3eg1@ds033976.mlab.com:33976/heroku_cn0nx3mh", 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/viet", 
     db,
     users;
 

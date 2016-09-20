@@ -261,7 +261,7 @@ border:solid 0.2em black;
 			right:0px;
 			z-index: 1000;			
 			background: url('/images/rotate-device.png') no-repeat;
-			background-size: 35% 65%;
+			background-size: 45% 65%;
 			background-position: 50% 50%;
 			background-color: black;
 		}
@@ -270,7 +270,7 @@ border:solid 0.2em black;
 			position: absolute;
 			left: -1000px;	
 		}
-		
+
 		#map{
 		    min-height:0%;
 		    width:0%;

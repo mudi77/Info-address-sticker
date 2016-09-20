@@ -6,7 +6,6 @@ html, body{
         padding: 0;
         overflow-x: hidden; 
   		overflow-y: hidden;
-  		font-size: 100%;
       }
 
 #map{
@@ -23,7 +22,6 @@ html, body{
 	right:0px;
 	text-align: center;
 	border-left: solid 0.3em #08088A;
-
 }
 
 .title{	
@@ -232,7 +230,7 @@ border:solid 0.2em black;
 	width:90%;
 	height:75%;
 	top:10%;  
-	margin:4%;	
+	margin:5%;
 }
 
 .pokynyTable{
@@ -245,8 +243,8 @@ border:solid 0.2em black;
 }
 
 h2{
-	font: 1em normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	-moz-font: 1em normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font: 1rem normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	-moz-font: 2.2vh normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .pokynyTable td{

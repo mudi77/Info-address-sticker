@@ -2,6 +2,7 @@
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  		mobileSuffix = "_mobile";
 	}
+//	mobileSuffix = "_mobile";
 
 function table(){
 
@@ -327,26 +328,29 @@ var tableWrapper = document.createElement("div");
 			container.appendChild(table2);
 			document.getElementById("btnholder").appendChild(btnSubmit);
 
-document.getElementsByTagName("input")[3].addEventListener("click", function(){
+var inputs = document.getElementsByTagName("input");
 
-	var back = document.getElementById("btnBack");
-if($(document.activeElement).attr('type') == "text"){
-    	alert("Keyboard is visible");
-    	
-    	back.parentElement.removeChild(back);
-	}else{
-    	alert("Keyboard is not visibl " + this);  
-    //	var back = document.getElementById("btnBack");
-    //	if(back){back.parentElement.removeChild(back);}
-    	document.getElementById("container").appendChild(back);
-}
+for(var i = 0; i < inputs.length; i++){
+	inputs[i].addEventListener("click", function(){
 
-document.getElementById("container").appendChild(back);
+    if(mobileSuffix){ 
+		var back = document.getElementById("btnBack");
+		var table = document.getElementsByClassName("tablescroll")[0];    	   	
+        	
+    	var back = document.getElementById("btnBack");
+    	if(back){
+    		back.style.visibility = "hidden";
+    		table.style.visibility = "hidden";
+    	}
 
-//this.addEventListener("onfocusout",function(){document.getElementById("container").appendChild(back)}, false);
-
+		this.addEventListener("focusout",function(){
+			console.log("tu som");
+			back.style.visibility = "visible";
+		    table.style.visibility = "visible";
+		}, false);
+	}
 }, false);
-
+}
 
 
 

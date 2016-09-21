@@ -24,26 +24,26 @@ html, body{
 	border-left: solid 0.3em #08088A;
 }
 
-.title{	
-	display: inline-block;
-	height: 13%;
+.title{		
+	display: inline-block;	
 	width: 100%;
-	background: #A9BCF5;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	color: #25383C;	
+	top:0%;
+	background: #A9BCF5;	
+	line-height: 60%;
+	text-align: center;
 }
-
-@font-face{
-	font-family: "cannon ball";
-	src: url('/fonts/cannonBALL.ttf'); 
-}
-
 .title h1{
 	font-family: "cannon ball";
 	font-size: 3vw;	
 	font-weight: normal;
 	color:#151B54;
 }
+@font-face{
+	font-family: "cannon ball";
+	src: url('/fonts/cannonBALL.ttf'); 
+}
+
+
 
 .table{
 	position: absolute;

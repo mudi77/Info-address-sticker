@@ -1,11 +1,7 @@
-//window.onload = function(){
-
 	var mobileSuffix = "";
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
- 		alert("mobile");
  		mobileSuffix = "_mobile";
 	}
-//}
 
 function table(){
 
@@ -17,7 +13,6 @@ var thisHeight = parseInt(height * 0.4);
 
 $('#tableViet').tableScroll({width:thisWidth,height:thisHeight});
 }
-
 
 function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -331,6 +326,30 @@ var tableWrapper = document.createElement("div");
 			btnSubmit.addEventListener("click", addUser, false);
 			container.appendChild(table2);
 			document.getElementById("btnholder").appendChild(btnSubmit);
+
+document.getElementsByTagName("input")[3].addEventListener("click", function(){
+
+	var back = document.getElementById("btnBack");
+if($(document.activeElement).attr('type') == "text"){
+    	alert("Keyboard is visible");
+    	
+    	back.parentElement.removeChild(back);
+	}else{
+    	alert("Keyboard is not visibl " + this);  
+    //	var back = document.getElementById("btnBack");
+    //	if(back){back.parentElement.removeChild(back);}
+    	document.getElementById("container").appendChild(back);
+}
+
+document.getElementById("container").appendChild(back);
+
+//this.addEventListener("onfocusout",function(){document.getElementById("container").appendChild(back)}, false);
+
+}, false);
+
+
+
+
 
 			var music = document.createElement("div");
 				music.innerHTML = "<audio id='msc' name='myMusic' loop='false' hidden='true' src='/multimedia/jmje.ogg'></audio>";

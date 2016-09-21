@@ -333,9 +333,10 @@ var inputs = document.getElementsByTagName("input");
 for(var i = 0; i < inputs.length; i++){
 	inputs[i].addEventListener("click", function(){
 
+var back, table;
     if(mobileSuffix){ 
-		var back = document.getElementById("btnBack");
-		var table = document.getElementsByClassName("tablescroll")[0];    	   	
+		 	back = document.getElementById("btnBack");
+		 	table = document.getElementsByClassName("tablescroll")[0];    	   	
         	
     	var back = document.getElementById("btnBack");
     	if(back){
@@ -348,7 +349,12 @@ for(var i = 0; i < inputs.length; i++){
 			back.style.visibility = "visible";
 		    table.style.visibility = "visible";
 		}, false);
+	}else if(back & table){
+			back.style.visibility = "visible";
+		    table.style.visibility = "visible";
 	}
+
+
 }, false);
 }
 
@@ -398,7 +404,7 @@ for(var i = 0; i < inputs.length; i++){
 		var obvody = "<strong>Obvody</strong> - je tu 80 obvodov ide o prve rozdelenie obvodov mozno sa casom ukaze ze bude treba niektore rozdelit "
 				   + "alebo spojit myslienka bola taka aby v ramci obvodu bolo priblizne rovnaky pocet bytov, niektore obvody su aj v priemyselnych "
 				   + "alebo okrajovych castiach Kosic. Hranice obvodov by mali byt v zhode s ulicami avsak nie kazdy obvod je tak ohraniceny.. "
-				   + "Kedze je potrebne prepracovat cele Kosice vyberajte obvody mestske aj tie odlahle.. ";
+				   + "Kedze je potrebne prepracovat cele Kosice prosim vyberajte obvody mestske aj tie odlahle.. ";
 
 		var zvestovatelia = "<strong>Zvestovatelia</strong> - do tejto aktivity sa moze zapojit pokrsteny zvestovatel ktory ma seriozny zaujem sa podielat vo vyhladavacej sluzbe, "
 						  +	"a ucit sa vietnamsky jazyk.. Skor ako sa prihlasite o obvod zaregistrujte sa v casti 'Zvestovatelia' zadajte heslo s apon 6 znakmi";

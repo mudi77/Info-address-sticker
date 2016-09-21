@@ -19,6 +19,7 @@
         
 
 <div class="container" id="container">
+<div class="mobile"></div>
   <span class="title"><h1>{{title}}</h1></span> 
     <table class="table">
       <tr><td><button class="btnMain" id="obv">OBVODY</button></td><td><input type="button" class="btnMain" id="zvs" value="ZVESOTVATELIA"></button></td></tr>

@@ -135,10 +135,9 @@ html, body{
 	border-radius: 0.3em;
 }
 
-
 .btnMain{
 	width:100%;
-	min-height:100%;
+	height:100%;
 	cursor: pointer;
 	border-radius: 1.5em;
 	background: #A0CFEC;
@@ -249,13 +248,8 @@ border:solid 0.2em black;
 	height:100%;
 	text-align: justify;
 	padding: 0px;
- 	border-collapse: collapse;
- 	border:solid 1px black;
+ 	border-collapse: collapse; 	
 }
-
-/*h2{
-	font: 2.4vh normal Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;	
-  }*/
 
 .pokynyTable td{
 	padding:0; 

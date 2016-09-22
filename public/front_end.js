@@ -3,6 +3,13 @@
  		mobileSuffix = "_mobile";
 	}
 //	mobileSuffix = "_mobile";
+window.onload = function(){
+var dpi_x = document.getElementById('mobile').offsetWidth;
+var dpi_y = document.getElementById('mobile').offsetHeight;
+var width = screen.width / dpi_x;
+var height = screen.height / dpi_y;
+alert("device screen :: " + Math.round(width) + " x " + Math.round(height));
+}
 
 function table(){
 
@@ -470,7 +477,7 @@ var back, table;
 
 }
 
-//BUGS
+//********************  BUGS  **************************
 
 //add multimedia and pick them randomly :)
 
@@ -479,4 +486,4 @@ var back, table;
 
 //-in smartphone is not show rotating device
 //-in smartphone lauout is broken 
-
+//- block at ALL smartphones 

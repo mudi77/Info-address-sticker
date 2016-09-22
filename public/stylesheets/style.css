@@ -268,7 +268,7 @@ border:solid 0.2em black;
 
 
 /*@media screen and (min-width : 768px) and (max-width : 1024px) {*/
-@media screen and (min-width : 1024px) and (max-width : 1920px) {
+@media screen and (min-width : 768px) and (max-width : 1024px) {
 
 		.container{
 			position: relative;
@@ -283,8 +283,8 @@ border:solid 0.2em black;
 
 		.mobile{			
 			position:absolute;
-			width:30%;
-			height: 50%;
+			width:25%;
+			height: 40%;
 			border:solid 0.5em white;
 			top: 60%;
     		left: 60%;    		

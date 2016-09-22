@@ -399,7 +399,7 @@ var back, table;
 			pokynyTableWrapper.className = "pokynyTableWrapper" + mobileSuffix;
 
 		var uvod = "<strong>Vietnamska aktivita</strong> - velka prilezitost najst milych ludi, ktori su ochotni pocuvat biblicku pravdu :) + ucast"
-				 + " na zaujimavej a viac povzbudzujucej forme sluzby";
+				 + " na zaujimavej a povzbudzujucej forme sluzby";
 
 		var obvody = "<strong>Obvody</strong> - je tu 80 obvodov ide o prve rozdelenie obvodov mozno sa casom ukaze ze bude treba niektore rozdelit "
 				   + "alebo spojit myslienka bola taka aby v ramci obvodu bolo priblizne rovnaky pocet bytov, niektore obvody su aj v priemyselnych "
@@ -428,7 +428,7 @@ var back, table;
 			BUTTONS.btnPrid.addEventListener("click", function(){	
 
 			var container = document.getElementById("container")
-			container.innerHTML ="<span class='title'><h1>Pridelenie</h1></span><button class='btnBack' id='btnBack'></button>"
+			container.innerHTML ="<span class='title'><h1> :) </h1></span><button class='btnBack' id='btnBack'></button>"
 			+ "";
 			MENU.back(container);
  		}, false);
@@ -469,4 +469,14 @@ var back, table;
 }
 
 }
+
+//BUGS
+
+//add multimedia and pick them randomly :)
+
+//tilt after navigation doesn't display rotating device 
+//-tilt to portrait in zvestovatelia displays table.. 
+
+//-in smartphone is not show rotating device
+//-in smartphone lauout is broken 
 

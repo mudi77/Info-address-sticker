@@ -43,8 +43,6 @@ html, body{
 	src: url('/fonts/cannonBALL.ttf'); 
 }
 
-
-
 .table{
 	position: absolute;
 	table-layout: fixed;
@@ -140,7 +138,7 @@ html, body{
 	height:100%;
 	cursor: pointer;
 	border-radius: 1.5em;
-	background: #A0CFEC;
+	background-color: #A0CFEC;
 	border: solid 0.2em #08088A;
 	color: #151B54;
 	font-size: 1.3vw;
@@ -153,6 +151,20 @@ html, body{
 	font-color: black;
 }
 .btnMain:focus{
+	outline:0;	
+}
+
+.btnMain#btnPrid{	
+	background:#A0CFEC url('/images/smile.png') no-repeat;
+	background-size: 40% 60%;
+	background-position: 50% 50%;
+}
+.btnMain#btnPrid:hover{
+	background: #A9BCF5 url('/images/smile.png') no-repeat;
+	background-size: 40% 60%;
+	background-position: 50% 50%;
+}
+.btnMain#btnPrid:focus{
 	outline:0;	
 }
 
@@ -293,7 +305,7 @@ border:solid 0.2em black;
     		margin: -15% 0 0 -30%;  
     		
 			border-radius: 2em;
-			border-top: solid 2em white;
+			border-top: solid 2.2em white;
 			border-bottom: solid 2em white;
 
     		-webkit-animation: mobile 5s ease-in-out infinite;

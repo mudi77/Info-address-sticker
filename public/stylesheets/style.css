@@ -283,16 +283,16 @@ border:solid 0.2em black;
 
 		.mobile{			
 			position:absolute;
-			width:20%;
-			height: 60%;
+			width:40%;
+			height: 30%;
 			border:solid 0.5em white;
 			top: 60%;
     		left: 60%;    		
     		margin: -15% 0 0 -30%;  
     		
 			border-radius: 2em;
-			border-left: solid 2em white;
-			border-right: solid 2em white;
+			border-top: solid 2em white;
+			border-bottom: solid 2em white;
 
     		-webkit-animation: mobile 5s ease-in-out infinite;
     		-moz-animation: mobile 5s ease-in-out infinite;

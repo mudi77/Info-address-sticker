@@ -5,7 +5,7 @@
 
 
 
-//window.onload = function(){
+window.onload = function(){
 
 var refElement = document.createElement("div");
 refElement.setAttribute("id","mobile");
@@ -30,7 +30,7 @@ if(blockDevice){
 	body.innerHTML = "VELMI MALE ZARIADENIE...  OBSAH SA NEZOBRAZI :(";
 }
 
-//}
+}
 
 function table(){
 

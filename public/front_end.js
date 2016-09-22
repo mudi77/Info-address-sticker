@@ -30,22 +30,35 @@ if(blockDevice){
 	body.innerHTML = "NEPODPOROVANE ZARIADENIE... SORRY ALE OBSAH SA NEZOBRAZI :(";
 }
 
-}
+
+
 
 var layoutChangeOnRotation = (function(){
 
-	window.addEventListener("orientationchange", function() {
+	// window.addEventListener("orientationchange", function() {
 
-	var orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
-	alert(" tu som " + orientation);
+	// var orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
+	// alert(" tu som " + orientation);
 
-	var container = document.getElementById("container");
-	container.style.position = "relative";
-	container.style.zIndex = 1000;
+	// var container = document.getElementById("container");
+	// container.style.position = "relative";
+	// container.style.zIndex = 1000;
 
-	}, false);
+	// }, false);
+
+	$(window).on("orientationchange",function(event){
+  		if(event.orientation === 0){
+  				alert("portrait");
+  			}else{
+  				alert("landscape");
+  		}
+});
 
 })();
+
+}
+
+
 
 function table(){
 

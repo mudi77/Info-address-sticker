@@ -37,10 +37,11 @@ var layoutChangeOnRotation = (function(){
 	window.addEventListener("orientationchange", function() {
 
 	var orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
-	alert(orientation);
+	alert(" tu som " + orientation);
 
 	var container = document.getElementById("container");
 	container.style.position = "relative";
+	container.style.zIndex = 1000;
 
 	}, false);
 

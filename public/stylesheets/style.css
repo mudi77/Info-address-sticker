@@ -288,7 +288,7 @@ border:solid 0.2em black;
 			height: 100%;
 			top:0px;	
 			right:0px;
-			z-index: 1000;			
+	/*		z-index: 1000;	 */		
 			background-color: black;	
 			border: 0;
 			border-width: 0;	
@@ -296,24 +296,6 @@ border:solid 0.2em black;
 
 
 		.mobileImage{			
-			position:absolute;
-			width:40%;
-			height: 50%;
-			border:solid 0.5em white;
-			top: 35%;
-    		left: 60%;    		
-    		margin: -15% 0 0 -30%;  
-    		
-			border-radius: 2em;
-			border-top: solid 2.2em white;
-			border-bottom: solid 2em white;
-
-    		-webkit-animation: mobile 5s ease-in-out infinite;
-    		-moz-animation: mobile 5s ease-in-out infinite;
-            -webkit-animation-delay:2s;
-    		background-color: grey;
-		}
-		.mobileImage2{			
 			position:absolute;
 			width:40%;
 			height: 50%;
@@ -357,8 +339,18 @@ border:solid 0.2em black;
 		}
 	
 
-
-
+.tablescroll{ 
+	position: relative; 
+	z-index: -100;
+}
+.tableEvanInput{
+	position: relative;
+	z-index: -100;
+}
+.pokynyTable{
+	position: relative;
+	z-index: -100;	
+}
 
 		h1{
 			position: absolute;

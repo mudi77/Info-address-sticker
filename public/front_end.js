@@ -3,8 +3,6 @@
  		mobileSuffix = "_mobile";
 	}
 
-
-
 window.onload = function(){
 
 var refElement = document.createElement("div");
@@ -30,47 +28,7 @@ if(blockDevice){
 	body.innerHTML = "NEPODPOROVANE ZARIADENIE... SORRY ALE OBSAH SA NEZOBRAZI :(";
 }
 
-
-
-
-var layoutChangeOnRotation = (function(){
-
-	// window.addEventListener("orientationchange", function() {
-
-	// var orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
-	// alert(" tu som " + orientation);
-
-	// var container = document.getElementById("container");
-	// container.style.position = "relative";
-	// container.style.zIndex = 1000;
-
-	// }, false);
-
-	$(window).on("orientationchange",function(event){
-  		if(window.orientation == 0){
-  				alert("portrait");
-// var container = document.getElementById("container");
-// 	 container.style.position = "relative";
-// 	 container.style.zIndex = 1000;
-
-  			}else{
-  				alert("landscape");
-  				var container = document.getElementById("container");
-	 			container.style.position = "relative";
-	 			container.style.zIndex = 1000;
-
-	 			document.getElementsByClassName("mobileImage")[0].className += "mobileImage2";
-			container.style.visibility = "hidden";
-	 		//	if(document.getElementById(""))
-
-  		}
-});
-
-})();
-
 }
-
-
 
 function table(){
 
@@ -308,7 +266,7 @@ var MENU = {
 	zvestovatelia : (function(){
 			BUTTONS.btnZvest.addEventListener("click", function(){					
 		var container = document.getElementById("container")
-			container.innerHTML ="<span class='title'><h1>Zvestovatelia</h1></span><button class='btnBack' id='btnBack'></button>";
+			container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1>Zvestovatelia</h1></span><button class='btnBack' id='btnBack'></button>";
 					
 		var getEvangelists = function(refresh){
 					if(refresh){						
@@ -350,7 +308,7 @@ var tableWrapper = document.createElement("div");
                             console.log('error', errorThrown);
                             }
             });			
-		tableWrapper.appendChild(table1);
+			tableWrapper.appendChild(table1);
 			container.appendChild(tableWrapper);
 
             };	
@@ -440,9 +398,13 @@ var back, table;
 	vietnamci : (function(){
 			BUTTONS.btnViet.addEventListener("click", function(){	
 
-		var container = document.getElementById("container")
-			container.innerHTML ="<span class='title'><h1>Vietnamci</h1></span><button class='btnBack' id='btnBack'></button>"
+		// var container = document.getElementById("container");
+		// console.log(container.childNodes[1]);
+		// var temp = container.childNodes[1] + "";
+			container.innerHTML = "<div class='mobileImage'></div><span class='title'><h1>Vietnamci</h1></span><button class='btnBack' id='btnBack'></button>"
 		+ "";
+ 
+	//	container.appendChild(temp);
 		MENU.back(container);
  	}, false);
 	})(),
@@ -451,7 +413,7 @@ var back, table;
 			BUTTONS.btnZauj.addEventListener("click", function(){	
 
 		var container = document.getElementById("container")
-			container.innerHTML ="<span class='title'><h1>Zaujemcovia</h1></span><button class='btnBack' id='btnBack'></button>"
+			container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1>Zaujemcovia</h1></span><button class='btnBack' id='btnBack'></button>"
 		+ "";
 		MENU.back(container);
  	}, false);
@@ -461,7 +423,7 @@ var back, table;
 			BUTTONS.btnPokn.addEventListener("click", function(){	
 
 		var container = document.getElementById("container");
-			container.innerHTML ="<span class='title'><h1>Pokyny</h1></span><button class='btnBack' id='btnBack'></button>";
+			container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1>Pokyny</h1></span><button class='btnBack' id='btnBack'></button>";
 		
 		var pokynyTableWrapper = document.createElement("div");	
 			pokynyTableWrapper.className = "pokynyTableWrapper" + mobileSuffix;
@@ -496,15 +458,15 @@ var back, table;
 			BUTTONS.btnPrid.addEventListener("click", function(){	
 
 			var container = document.getElementById("container")
-			container.innerHTML ="<span class='title'><h1> :) </h1></span><button class='btnBack' id='btnBack'></button>"
+			container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1> :) </h1></span><button class='btnBack' id='btnBack'></button>"
 			+ "";
 			MENU.back(container);
  		}, false);
 	})(),
 
-	back : function(el){
+	back : function(el){			
 			BUTTONS.btnBack().addEventListener("click", function(){
-			 	el.innerHTML = "<span class='title'><h1>Vietnamska aktivita</h1></span>";
+			 	el.innerHTML = "<div class='mobileImage'></div><span class='title'><h1>Vietnamska aktivita</h1></span>";
 			 	var table = document.createElement("table");
 			 	 	table.className = "table";
 			 	for(var i = 1; i<=3; i++){
@@ -542,9 +504,9 @@ var back, table;
 
 //add multimedia and pick them randomly :)
 
-//tilt after navigation doesn't display rotating device 
-//-tilt to portrait in zvestovatelia displays table.. 
+//tilt after navigation doesn't display rotating device FIXED
+//-tilt to portrait in zvestovatelia displays table.. FIXED
 
-//-in smartphone is not show rotating device
-//-in smartphone lauout is broken 
+//-in smartphone is not show rotating device   FIXED
+//-in smartphone lauout is broken 	FIXED
 //- block at ALL smartphones 

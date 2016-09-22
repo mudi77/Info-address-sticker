@@ -35,8 +35,13 @@ if(blockDevice){
 var layoutChangeOnRotation = (function(){
 
 	window.addEventListener("orientationchange", function() {
-	// Announce the new orientation number
-	alert(screen.orientation);
+
+	var orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
+	alert(orientation);
+
+	var container = document.getElementById("container");
+	container.style.position = "relative";
+
 	}, false);
 
 })();

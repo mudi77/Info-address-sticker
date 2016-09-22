@@ -378,10 +378,8 @@ border:solid 0.2em black;
 			font-family: "cannon ball";
 			font-size: 2em;
 			font-weight: normal;
-			color:#fff;
-			
-	/*		padding-top:10%;
-			padding-bottom:10%;*/
+			color:#fff;			
+			padding-top:5%;			
 			overflow-x: hidden; 
   			overflow-y: hidden;
   			text-align: center;

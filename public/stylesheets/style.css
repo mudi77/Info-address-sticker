@@ -277,7 +277,9 @@ border:solid 0.2em black;
 			top:0px;	
 			right:0px;
 			z-index: 1000;			
-			background-color: black;		
+			background-color: black;	
+			border: 0;
+			border-width: 0;	
 		}
 
 

@@ -367,4 +367,17 @@ border:solid 0.2em black;
 			z-index: -100;
 		}
 
+
+		.blockElement{
+			position: relative;
+			width:100%;
+			height: 100%;
+			top:0px;	
+			right:0px;
+			z-index: 1000;			
+			background-color: black;	
+			border: 0;
+			border-width: 0;	
+		}
+
 }

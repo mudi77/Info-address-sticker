@@ -3,12 +3,23 @@
  		mobileSuffix = "_mobile";
 	}
 //	mobileSuffix = "_mobile";
+
+var blockDevice = false;
 window.onload = function(){
 var dpi_x = document.getElementById('mobile').offsetWidth;
 var dpi_y = document.getElementById('mobile').offsetHeight;
 var width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / dpi_x;
 var height = (window.innerHeight || document.documentElement.clientHeight  || document.body.clientHeight) / dpi_y;
 alert("device screen :: " + Math.round(width) + " x " + Math.round(height) + " sum :: " + Math.round(width) * Math.round(height));
+var blockDevice = (Math.round(width) * Math.round(height)) < 40 ? true : false;
+
+if(blockDevice){
+	var blockEl = document.createElement("div");
+	blockEl.className = "blockElement";
+	blockEl.innerHTML = "VELMI MALE ZARIADENIE.. OBSAH SA NEZOBRAZI :(";
+	document.getElementsByTagName("body")[0].appendChild(blockEl);
+}
+
 }
 
 function table(){

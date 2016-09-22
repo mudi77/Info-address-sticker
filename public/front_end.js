@@ -60,7 +60,8 @@ var layoutChangeOnRotation = (function(){
 	 			container.style.zIndex = 1000;
 
 	 			document.getElementsByClassName("mobileImage")[0].className += "mobileImage2";
-
+			container.style.visibility = "hidden";
+	 		//	if(document.getElementById(""))
 
   		}
 });

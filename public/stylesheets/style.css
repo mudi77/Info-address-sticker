@@ -369,14 +369,14 @@ border:solid 0.2em black;
 }
 
 .blockElement{
-			position: relative;		
+			position: fixed;		
 			width:100%;
 			height: 100%;
 			top:0px;	
 			right:0px;					
 			background-color: #000;	
 			font-family: "cannon ball";
-			font-size: 2.5em;
+			font-size: 2em;
 			font-weight: normal;
 			color:#fff;
 			text-align: center;

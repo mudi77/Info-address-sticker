@@ -47,7 +47,7 @@ var layoutChangeOnRotation = (function(){
 	// }, false);
 
 	$(window).on("orientationchange",function(event){
-  		if(event.orientation === 0){
+  		if(window.orientation == 0){
   				alert("portrait");
   			}else{
   				alert("landscape");

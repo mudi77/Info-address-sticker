@@ -32,14 +32,14 @@ if(blockDevice){
 
 }
 
-var layoutChangeOnRotation = function(){
+var layoutChangeOnRotation = (function(){
 
 	window.addEventListener("orientationchange", function() {
 	// Announce the new orientation number
 	alert(screen.orientation);
 	}, false);
 
-}
+})();
 
 function table(){
 

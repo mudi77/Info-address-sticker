@@ -386,7 +386,7 @@ border:solid 0.2em black;
 			right:0px;					
 			background-color: #000;	
 			font-family: "cannon ball";
-			font-size: 2em;
+			font-size: 1.8em;
 			font-weight: normal;
 			color:#fff;			
 			padding-top:5%;			
@@ -394,6 +394,6 @@ border:solid 0.2em black;
   			overflow-y: hidden;
   			text-align: center;
   			vertical-align: middle;
-			line-height: 100px;
+			line-height: 60px;
 		}
 

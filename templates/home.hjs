@@ -19,8 +19,8 @@
         
 
 <div class="container" id="container">
-<div class="mobile"></div>
-<div id="mobile" style="height:1in; width:1in; left:100%; top: 100%; position: fixed"></div>
+<div class="mobileImage"></div>
+<!--<div id="mobile" style="height:1in; width:1in; left:100%; top: 100%; position: fixed"></div>-->
   <span class="title"><h1>{{title}}</h1></span> 
     <table class="table">
       <tr><td><button class="btnMain" id="obv">OBVODY</button></td><td><input type="button" class="btnMain" id="zvs" value="ZVESOTVATELIA"></button></td></tr>

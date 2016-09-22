@@ -6,9 +6,9 @@
 window.onload = function(){
 var dpi_x = document.getElementById('mobile').offsetWidth;
 var dpi_y = document.getElementById('mobile').offsetHeight;
-var width = screen.width / dpi_x;
-var height = screen.height / dpi_y;
-alert("device screen :: " + Math.round(width) + " x " + Math.round(height));
+var width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / dpi_x;
+var height = (window.innerHeight || document.documentElement.clientHeight  || document.body.clientHeight) / dpi_y;
+alert("device screen :: " + Math.round(width) + " x " + Math.round(height) + " sum :: " + Math.round(width) * Math.round(height));
 }
 
 function table(){

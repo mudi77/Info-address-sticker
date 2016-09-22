@@ -49,8 +49,16 @@ var layoutChangeOnRotation = (function(){
 	$(window).on("orientationchange",function(event){
   		if(window.orientation == 0){
   				alert("portrait");
+var container = document.getElementById("container");
+	 container.style.position = "relative";
+	 container.style.zIndex = 1000;
+
   			}else{
   				alert("landscape");
+  				var container = document.getElementById("container");
+	 container.style.position = "relative";
+	 container.style.zIndex = 1000;
+
   		}
 });
 

@@ -2,10 +2,21 @@
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  		mobileSuffix = "_mobile";
 	}
-//	mobileSuffix = "_mobile";
 
-var blockDevice = false;
-window.onload = function(){
+
+
+//window.onload = function(){
+
+var refElement = document.createElement("div");
+refElement.setAttribute("id","mobile");
+refElement.style.height = "1in";
+refElement.style.width = "1in"; 
+refElement.style.left = "100%"; 
+refElement.style.top = "100%"; 
+refElement.style.position = "fixed"; 
+document.getElementsByTagName("html")[0].appendChild(refElement);	
+//<div id="mobile" style="height:1in; width:1in; left:100%; top: 100%; position: fixed"></div>
+
 var dpi_x = document.getElementById('mobile').offsetWidth;
 var dpi_y = document.getElementById('mobile').offsetHeight;
 var width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / dpi_x;
@@ -19,7 +30,7 @@ if(blockDevice){
 	body.innerHTML = "VELMI MALE ZARIADENIE...  OBSAH SA NEZOBRAZI :(";
 }
 
-}
+//}
 
 function table(){
 

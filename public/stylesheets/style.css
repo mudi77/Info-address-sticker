@@ -277,32 +277,53 @@ border:solid 0.2em black;
 			top:0px;	
 			right:0px;
 			z-index: 1000;			
-			
-
-background: url('/images/rotate.gif') no-repeat;
-			background-size: 50% 100%;
-			background-position: 50% 50%;
-
-			background-color: black;
+			background-color: black;		
 		}
 
+
+		.mobile{			
+			position:absolute;
+			width:36%;
+			height: 40%;
+			border:solid 0.5em white;
+			top: 60%;
+    		left: 60%;    		
+    		margin: -15% 0 0 -30%;  
+    		
+			border-radius: 2em;
+			border-left: solid 2em white;
+			border-right: solid 2em white;
+
+    		-webkit-animation: mobile 5s ease-in-out infinite;
+    		-moz-animation: mobile 5s ease-in-out infinite;
+            -webkit-animation-delay:2s;
+    		background-color: grey;
+		}
 
 		@-webkit-keyframes mobile {
-    		from{
+    		0%{
               -webkit-transform: rotate(0deg);
     			}
-    		  to{
+    		  30%{
                 -webkit-transform: rotate(90deg);
     		    }
+    		    100%{
+    		    	-webkit-transform: rotate(90deg);
+    		    }
+
 		}
 		@-moz-keyframes mobile {
-    		from{
+    		0%{
               -moz-transform: rotate(0deg);
     			}
-    		  to{
+    		  30%{
+                -moz-transform: rotate(90deg);
+    		    }
+    		    100%{
                 -moz-transform: rotate(90deg);
     		    }
 		}
+	
 
 
 

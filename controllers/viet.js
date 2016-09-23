@@ -8,9 +8,9 @@ var db = application.getDB();
 
 console.log("connected to db ::: " + db);
 
-db.collection('coordinates').insert(coordinates.getData(), {}, function(){
-		console.log("db insert OK");
- 	});
+// db.collection('coordinates').insert(coordinates.getData(), {}, function(){
+// 		console.log("db insert OK");
+//  	});
 
 module.exports = {
  

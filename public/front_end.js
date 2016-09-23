@@ -121,7 +121,7 @@ var BUTTONS = {
 	btnViet : document.getElementById("btnViet"),
 	btnZauj : document.getElementById("btnZauj"),
 	btnPokn : document.getElementById("btnPokn"),
-	btnPrid : document.getElementById("btnPrid")
+	btnSmile : document.getElementById("btnSmile")
 }
 
 var MENU = {
@@ -185,7 +185,7 @@ var MENU = {
 					var infoWindowMarkup = "<strong>OBVOD " + name.split("_")[1] + "</strong><br><br>Status : " 
 										 + assignment + "<br>Datum : " + date + "<br>Info : " + info 
 										 + "<br>Poznamky : " + notes + "<br><br><input id='pswdInput' class='pswdInput' placeholder='heslo'>"
-										 + "</input>&nbsp;<button id='assgnBtn' disabled='true' class='assgnButton'>PRIDELIŤ</button>";
+										 + "</input>&nbsp;<button id='assgnBtn' disabled='true' class='assgnButton'>PRIDELIT</button>";
 
 					var prev_infowindow = false; 
 					(function(){
@@ -221,7 +221,8 @@ var MENU = {
 
             							    	assignmentBtn.addEventListener("click", function(el){
 												prev_infowindow.close();												
-											var blockID = this.parentElement.getElementsByTagName("strong")[0].innerText.split(" ")[1];
+									//		var blockID = this.parentElement.getElementsByTagName("strong")[0].innerText.split(" ")[1];
+											var blockID = this.parentElement.getElementsByTagName("strong")[0].innerHTML.split(" ")[1];
 											var date = new Date();
 												date = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
 													 $.ajax({
@@ -230,8 +231,16 @@ var MENU = {
                 	 						//		 data: userData,
                 	 						//		 dataType: "json",
                 	 								 success: function(){
+var music = document.createElement("div");
+				music.innerHTML += "<audio id='mscOk' name='myMusic' loop='false' hidden='true' src='/multimedia/OK_Ok.ogg'></audio>";
+				document.getElementById("container").appendChild(music);
+
+
                 									 	console.log("sent");   
-                									 	            		
+                									 	var littleMusic = document.getElementById("mscOk");
+			                								littleMusic.volume = 0.8;
+			                								littleMusic.loop = false;
+			                								littleMusic.play();                 									 	            		
                													},
                										 error: function(XMLHttpRequest, textStatus, errorThrown){
                             							console.log('error', errorThrown);
@@ -260,6 +269,8 @@ var MENU = {
                     });
 }
 	}, false);
+
+	
 
 	})(),
 
@@ -454,12 +465,46 @@ var back, table;
  	}, false);
 	})(),
 
-	pridelenie : (function(){
-			BUTTONS.btnPrid.addEventListener("click", function(){	
+	smile : (function(){
+			BUTTONS.btnSmile.addEventListener("click", function(){	
 
 			var container = document.getElementById("container")
 			container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1> :) </h1></span><button class='btnBack' id='btnBack'></button>"
 			+ "";
+
+			var vietPhrases = [{"Ahoj":{"viet":"Chao","name":"Ahoj_Chao"}},
+							   {"Ahoj 2":{"viet":"Tam Biet","name":"Ahoj_Tam_Biet"}},
+							   {"Ano":{"viet":"Co","name":"Ano_Co"}},
+							   {"Dakujem":{"viet":"Cam dn","name":"Dakujem_Cam_dn"}},
+							   {"Dobry Den":{"viet":"Cin Chao","name":"DobryDen_Cin_Chao"}},
+							   {"Dovidenia":{"viet":"Heng Ap lai","name":"Dovidenia_heng_ap_lai"}},
+							   {"Mozno":{"viet":"Co le Co the chac la","name":"Mozno_Co_le_Co_the_chac_la"}},
+							   {"OK":{"viet":"Ok","name":"OK_Ok"}},
+							   {"Prepacte":{"viet":"Xin loi","name":"Prepacte_Xin_loi"}},
+							   {"Prosim":{"viet":"Khong co gi","name":"Prosim_Khong_co_gi"}}];
+
+		var random = Date.now().toString().substring(12,13);
+		var fileName, slov, viet, name = "";	
+
+		for(obj in vietPhrases[random]){
+			console.log(obj + " vietnamsky : " + vietPhrases[random][obj].viet + " file : " + vietPhrases[random][obj].name);
+			fileName = vietPhrases[random][obj].name;
+			slov = obj;
+			viet = vietPhrases[random][obj].viet;
+			name = vietPhrases[random][obj].name;
+		}
+
+		container.innerHTML += "<pre><h2>" + slov + ":</h2>   <h3>'" + viet + "'</h3></pre>";
+
+				var music = document.createElement("div");
+				music.innerHTML = "<audio id='msc' name='myMusic' loop='false' hidden='true' src='/multimedia/" + name + ".ogg'></audio>";
+			container.appendChild(music);
+			var littleMusic = document.getElementById("msc");
+			                		littleMusic.volume = 0.8;
+			                		littleMusic.loop = false;
+			                		littleMusic.play();      
+
+
 			MENU.back(container);
  		}, false);
 	})(),
@@ -488,7 +533,7 @@ var back, table;
 				 	if(i == 3){
 				 		td1.appendChild(BUTTONS.btnPokn);
 				 		tr.appendChild(td1);	
-				 		td2.appendChild(BUTTONS.btnPrid);
+				 		td2.appendChild(BUTTONS.btnSmile);
 				 		tr.appendChild(td2);
 				 	}
 				 	table.appendChild(tr);

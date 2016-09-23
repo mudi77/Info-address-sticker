@@ -43,6 +43,20 @@ html, body{
 	src: url('/fonts/cannonBALL.ttf'); 
 }
 
+h2{
+font-family: "cannon ball";
+	font-size: 3vw;	
+	font-weight: normal;
+	color:green;	
+}
+h3{
+font-family: "cannon ball";
+	font-size: 3vw;	
+	font-weight: normal;
+	color:yellow;	
+}
+
+
 .table{
 	position: absolute;
 	table-layout: fixed;
@@ -154,17 +168,17 @@ html, body{
 	outline:0;	
 }
 
-.btnMain#btnPrid{	
+.btnMain#btnSmile{	
 	background:#A0CFEC url('/images/smile.png') no-repeat;
 	background-size: 40% 60%;
 	background-position: 50% 50%;
 }
-.btnMain#btnPrid:hover{
+.btnMain#btnSmile:hover{
 	background: #A9BCF5 url('/images/smile.png') no-repeat;
 	background-size: 40% 60%;
 	background-position: 50% 50%;
 }
-.btnMain#btnPrid:focus{
+.btnMain#btnSmile:focus{
 	outline:0;	
 }
 
@@ -182,7 +196,7 @@ html, body{
 	font-size:1em; 
 	font-weight: bold;
 	border-radius: 1em;
-border:solid 0.2em black;
+	border:solid 0.2em black;
 }
 .btnBack:hover{
 	background-color: #A9BCF5; 
@@ -279,9 +293,9 @@ border:solid 0.2em black;
 }
 
 
-/*@media screen and (min-width : 768px) and (max-width : 1024px) {*/
-@media screen and (min-width : 768px) and (max-width : 1024px) {
 
+/*@media screen and (min-width : 768px) and (max-width : 1024px) {*/
+@media screen and (min-width:501px) and (max-width:999px) {
 		.container{
 			position: relative;
 			width:100%;

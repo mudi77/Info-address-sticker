@@ -3,14 +3,14 @@ var coordinates = require('./../models/test_data');
 var View = require("../views/Base");
 var pjson = require("../package.json");
 
-var cordDATA = coordinates.getData();
+//var cordDATA = coordinates.getData();
 var db = application.getDB();
 
 console.log("connected to db ::: " + db);
 
-// db.collection('coordinates').insert(coordinates.getData(), {}, function(){
-// 		console.log("db insert OK");
-//  	});
+db.collection('coordinates').insert(coordinates.getData(), {}, function(){
+		console.log("db insert OK");
+ 	});
 
 module.exports = {
  

@@ -25,7 +25,7 @@ var blockDevice = (Math.round(width) * Math.round(height)) < 40 ? true : false;
 if(blockDevice){
 	var body = document.getElementsByTagName("body")[0];
 	body.setAttribute("class", "blockElement");
-	body.innerHTML = "NEPODPOROVANE ZARIADENIE... SORRY ALE OBSAH SA NEZOBRAZI :(";
+	body.innerHTML = "NEPODPOROVANE ZARIADENIE... SORRY ALE OBSAH SA NEZOBRAZI :(  skuste tablet alebo PC";
 }
 
 }

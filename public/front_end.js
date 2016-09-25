@@ -453,7 +453,7 @@ var back, table;
 		var vyhladavanie = "<strong>Vyhladavacia sluzba</strong> - </h2>";				  
 
 		var app_info = "<strong>Aplikacia</strong> - sluzi na organizovanie vietnamskej aktivity pre zdielanie a ukladanie informacii"
-				   	 + " ide o prvu verziu (zaregistrovanie, pridelenie obvodu) casom budu doplnene ostatne casti.. je to optimalizovane pre PC nie mobilne zariadenia";
+				   	 + " ide o prvu verziu (zaregistrovanie, pridelenie obvodu) casom budu doplnene ostatne casti.. je to optimalizovane pre <b>PC a Tablety nie telefony</b>";
 
 		var content = "<table class='pokynyTable'><tr><td>"+uvod+"</td></tr><tr><td>"+obvody+"</td></tr>"
 					+ "<tr><td>"+zvestovatelia+"</td></tr><tr><td>"+vyhladavanie+"</td></tr>"
@@ -555,3 +555,13 @@ var back, table;
 //-in smartphone is not show rotating device   FIXED
 //-in smartphone lauout is broken 	FIXED
 //- block at ALL smartphones 
+
+
+//********************* FEATURES ************************
+//-add vietnamiese 
+//-display / print block
+//-block numbers
+//
+//
+//
+//

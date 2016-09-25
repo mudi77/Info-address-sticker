@@ -295,7 +295,8 @@ font-family: "cannon ball";
 
 
 /*@media screen and (min-width : 768px) and (max-width : 1024px) {*/
-@media screen and (min-width:501px) and (max-width:1500px) {
+/*@media screen and (min-width:501px) and (max-width:999px) {*/
+	@media screen and (max-width:500px) { ... }
 		.container{
 			position: relative;
 			width:100%;

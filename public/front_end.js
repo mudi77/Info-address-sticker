@@ -28,7 +28,7 @@ var body = document.getElementsByTagName("body")[0];
 if(blockDevice){
 	
 	body.setAttribute("class", "blockElement");
-	body.innerHTML = "<center><b>:(</b></center><br>NEPODPOROVANE ZARIADENIE... PREPACTE ALE OBSAH SA NEZOBRAZI.. skuste prosim tablet alebo PC  <b>;)</b>";
+	body.innerHTML = "<center><b>Xin lỗi   :(</b></center><br>NEPODPOROVANE ZARIADENIE... PREPACTE ALE OBSAH SA NEZOBRAZI.. skuste prosim tablet alebo PC  <b>;)</b>";
 }else{
 	body.setAttribute("class", "");
 }

@@ -3,7 +3,10 @@
  		mobileSuffix = "_mobile";
 	}
 
+
 window.onload = function(){
+
+document.getElementsByClassName("loading")[0].style.display = "none";
 
 var refElement = document.createElement("div");
 refElement.setAttribute("id","mobile");
@@ -13,7 +16,6 @@ refElement.style.left = "100%";
 refElement.style.top = "100%"; 
 refElement.style.position = "fixed"; 
 document.getElementsByTagName("html")[0].appendChild(refElement);	
-//<div id="mobile" style="height:1in; width:1in; left:100%; top: 100%; position: fixed"></div>
 
 var dpi_x = document.getElementById('mobile').offsetWidth;
 var dpi_y = document.getElementById('mobile').offsetHeight;
@@ -22,10 +24,13 @@ var height = (window.innerHeight || document.documentElement.clientHeight  || do
 //alert("device screen :: " + Math.round(width) + " x " + Math.round(height) + " sum :: " + Math.round(width) * Math.round(height));
 var blockDevice = (Math.round(width) * Math.round(height)) < 40 ? true : false;
 
+var body = document.getElementsByTagName("body")[0];
 if(blockDevice){
-	var body = document.getElementsByTagName("body")[0];
+	
 	body.setAttribute("class", "blockElement");
-	body.innerHTML = "NEPODPOROVANE ZARIADENIE... SORRY ALE OBSAH SA NEZOBRAZI :(  skuste tablet alebo PC";
+	body.innerHTML = "<center><b>:(</b></center><br>NEPODPOROVANE ZARIADENIE... PREPACTE ALE OBSAH SA NEZOBRAZI.. skuste prosim tablet alebo PC  <b>;)</b>";
+}else{
+	body.setAttribute("class", "");
 }
 
 }
@@ -268,9 +273,7 @@ var music = document.createElement("div");
                             }
                     });
 }
-	}, false);
-
-	
+	}, false);	
 
 	})(),
 
@@ -394,9 +397,6 @@ var back, table;
 
 }, false);
 }
-
-
-
 
 			var music = document.createElement("div");
 				music.innerHTML = "<audio id='msc' name='myMusic' loop='false' hidden='true' src='/multimedia/jmje.ogg'></audio>";

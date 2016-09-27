@@ -10,7 +10,8 @@
 
   </head>
   <body>
-    <div id="map"></div>
+    <div class="loading"></div>
+    <div id="map" class="map"></div>
     <script type="text/javascript" src="front_end.js"></script>  
 
 
@@ -19,7 +20,7 @@
         
 
 <div class="container" id="container">
-<div class='mobileImage'></div>
+<div class='mobileImage' id="mob"></div>
 <!--<div id="mobile" style="height:1in; width:1in; left:100%; top: 100%; position: fixed"></div>-->
   <span class="title"><h1>{{title}}</h1></span> 
     <table class="table">
@@ -34,5 +35,6 @@
  <script type="text/javascript" src="tablescroll.js"></script>
 
 <div class="appver">{{ver}}</div>
+
   </body>
 </html>

@@ -1,6 +1,7 @@
 	var mobileSuffix = "";
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  		mobileSuffix = "_mobile";
+ 		alert("tu som");
 	}
 
 
@@ -555,7 +556,8 @@ var back, table;
 //-in smartphone is not show rotating device   FIXED
 //-in smartphone lauout is broken 	FIXED
 //- block at ALL smartphones 
-
+//- cross browser cross device layout in POKYNY !!!
+//- HOME button proportional !!!
 
 //********************* FEATURES ************************
 //-add vietnamiese 

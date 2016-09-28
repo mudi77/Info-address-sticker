@@ -1,7 +1,6 @@
 	var mobileSuffix = "";
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
- 		mobileSuffix = "_mobile";
- 		alert("tu som");
+ 		mobileSuffix = "_mobile"; 		
 	}
 
 

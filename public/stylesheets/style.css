@@ -168,8 +168,10 @@ font-family: "cannon ball";
 	background-color: #A0CFEC;
 	border: solid 0.2em #08088A;
 	color: #151B54;
+
+	font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;	
 	font-size: 1.3vw;
-	font-weight: bold;
+	font-weight: 900;
 	margin:0px;		
 }
 
@@ -183,12 +185,13 @@ font-family: "cannon ball";
 
 .btnMain#btnSmile{	
 	background:#A0CFEC url('/images/smile.png') no-repeat;
-	background-size: 40% 60%;
+	/*background-size: 40% 60%;*/
+	background-size:contain;
 	background-position: 50% 50%;
 }
 .btnMain#btnSmile:hover{
 	background: #A9BCF5 url('/images/smile.png') no-repeat;
-	background-size: 40% 60%;
+	background-size:contain;
 	background-position: 50% 50%;
 }
 .btnMain#btnSmile:focus{

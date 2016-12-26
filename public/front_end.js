@@ -30,18 +30,18 @@ if(blockDevice){
 	body.setAttribute("class", "blockElement");
 	body.innerHTML = "<center><b>Xin lỗi   :(</b></center><br>NEPODPOROVANE ZARIADENIE... PREPACTE ALE OBSAH SA NEZOBRAZI.. skuste prosim tablet alebo PC  <b>;)</b>";
 }else{
-	body.setAttribute("class", "");
+	//body.setAttribute("class", "");
 }
 
 }
 
-function table(){
+function tableInit(inputHeight){
 
 var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 var height = window.innerHeight || document.documentElement.clientHeight  || document.body.clientHeight;
 
 var thisWidth = parseInt(width * 0.34);
-var thisHeight = parseInt(height * 0.4); 
+var thisHeight = parseInt(inputHeight * parseInt(height)); 
 
 $('#tableViet').tableScroll({width:thisWidth,height:thisHeight});
 }
@@ -132,6 +132,8 @@ var BUTTONS = {
 var MENU = {
 	status : true,
 	flagInsert : true,
+	vietnameAdding : "initial",
+    marker : "initial",
 	obvody : (function(){
 		BUTTONS.btnObv.addEventListener("click", function(){
  if(MENU.status){
@@ -168,7 +170,7 @@ var MENU = {
                         	}
                         }
                      		
-                        var temPolygon = new google.maps.Polygon({
+                        var tempPolygon = new google.maps.Polygon({
 							paths: block,
 							draggable: false, 
 							editable: false,
@@ -179,25 +181,36 @@ var MENU = {
 							fillOpacity: 0.5
 						});
                          
- 					temPolygon.setMap(map); 
- 					google.maps.event.addListener(temPolygon,"mouseover",function(){
+ 					tempPolygon.setMap(map); 
+ 					var temp, flag = true;
+ 					google.maps.event.addListener(tempPolygon,"mouseover",function(){
  						this.setOptions({fillOpacity: 0.35, strokeWeight: 4, strokeColor: 'black'});
-					});   
-					google.maps.event.addListener(temPolygon,"mouseout",function(){
- 						this.setOptions({fillOpacity: 0.5, strokeWeight: 2, strokeColor: '#585858'});
-					});
+ 	                        if(MENU.vietnameAdding.indexOf("he") > -1){                            
+                                if(this != temp){                                    
+                                    this.setMap(null);
+                                    if(temp)
+                                       temp.setMap(map);
+                            }	                            			
+                            temp = this;           						
+ 						}                        
+					});						
+
+					google.maps.event.addListener(tempPolygon,"mouseout",function(){
+ 						this.setOptions({fillOpacity: 0.5, strokeWeight: 2, strokeColor: '#585858'}); 			
+					});					
 					
 					var infoWindowMarkup = "<strong>OBVOD " + name.split("_")[1] + "</strong><br><br>Status : " 
 										 + assignment + "<br>Datum : " + date + "<br>Info : " + info 
 										 + "<br>Poznamky : " + notes + "<br><br><input id='pswdInput' class='pswdInput' placeholder='heslo'>"
 										 + "</input>&nbsp;<button id='assgnBtn' disabled='true' class='assgnButton'>PRIDELIT</button>";
 
+				
 					var prev_infowindow = false; 
 					(function(){
 						var infowindow = new google.maps.InfoWindow({
           					content: infoWindowMarkup
         					}); 
-						google.maps.event.addListener(temPolygon,"click",function(event){ 
+						google.maps.event.addListener(tempPolygon,"click",function(event){ 
 							if(prev_infowindow)	{
 							prev_infowindow.close();
 							}	
@@ -226,7 +239,7 @@ var MENU = {
 
             							    	assignmentBtn.addEventListener("click", function(el){
 												prev_infowindow.close();												
-									//		var blockID = this.parentElement.getElementsByTagName("strong")[0].innerText.split(" ")[1];
+							
 											var blockID = this.parentElement.getElementsByTagName("strong")[0].innerHTML.split(" ")[1];
 											var date = new Date();
 												date = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
@@ -236,9 +249,9 @@ var MENU = {
                 	 						//		 data: userData,
                 	 						//		 dataType: "json",
                 	 								 success: function(){
-var music = document.createElement("div");
-				music.innerHTML += "<audio id='mscOk' name='myMusic' loop='false' hidden='true' src='/multimedia/OK_Ok.ogg'></audio>";
-				document.getElementById("container").appendChild(music);
+									var music = document.createElement("div");
+										music.innerHTML += "<audio id='mscOk' name='myMusic' loop='false' hidden='true' src='/multimedia/OK_Ok.ogg'></audio>";
+										document.getElementById("container").appendChild(music);
 
 
                 									 	console.log("sent");   
@@ -272,34 +285,33 @@ var music = document.createElement("div");
                             console.log('error', errorThrown);
                             }
                     });
-}
+    }
+
 	}, false);	
-
+	
 	})(),
-
+//*****************************************************************************************************
 	zvestovatelia : (function(){
 			BUTTONS.btnZvest.addEventListener("click", function(){					
-		var container = document.getElementById("container")
+		var container = document.getElementById("container");
 			container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1>Zvestovatelia</h1></span><button class='btnBack' id='btnBack'></button>";
-					
-		var getEvangelists = function(refresh){
-					if(refresh){						
-						var tbl = document.getElementsByClassName("tablescroll")[0];
-						tbl.parentElement.removeChild(tbl);
-					};
+			container.innerHTML += "<table class='table'><tbody><tr><td><button class='btnMain' id='zoznam'>ZOZNAM</button></td><td>"
+                                        + "<button class='btnMain' id='pridanie'>PRIDANIE</button></td></tr><tr><td></td><td></td></tr><tr><td>"
+                                        + "</td><td></td></tr></tbody></table>";		
 
-var tableWrapper = document.createElement("div");
-		tableWrapper.className = "tablescroll";
-		var table1 = document.createElement("table");
-		table1.id = "tableViet";
-		table1.setAttribute("cellspacing", 0);
-		table1.innerHTML = "<thead><tr><th>MENO</th><th>EMAIL</th><th>ZBOR</th></tr></thead>";
+        document.getElementById("zoznam").addEventListener('click', function(){                                
+            var tableWrapper = document.createElement("div");
+		      tableWrapper.className = "tablescroll";
+		      var table1 = document.createElement("table");
+		      table1.id = "tableViet";
+		      table1.setAttribute("cellspacing", 0);
+		      table1.innerHTML = "<thead><tr><th>MENO</th><th>EMAIL</th><th>ZBOR</th></tr></thead>";
 
-		$.ajax({
-            url: '/?action=getEvangelists',
-            type: 'get',
-            dataType: 'json',
-            success: function(data){        
+		      $.ajax({
+                url: '/?action=getEvangelists',
+                type: 'get',
+                dataType: 'json',
+                success: function(data){        
                 	var tbody = document.createElement("tbody");
                 	for(var i=0; i < data.length; i++){
                 		var tr = document.createElement("tr");
@@ -315,37 +327,37 @@ var tableWrapper = document.createElement("div");
                 		tr.appendChild(td3);
                 		tbody.appendChild(tr);                		
                 	}
-                table1.appendChild(tbody);	
-                table();
-            },
+                    table1.appendChild(tbody);	
+                    tableInit(0.5);
+                },
             error: function(XMLHttpRequest, textStatus, errorThrown){
-                            console.log('error', errorThrown);
-                            }
+                    console.log('error', errorThrown);
+                }
             });			
 			tableWrapper.appendChild(table1);
+            container.removeChild(container.childNodes[3]);
 			container.appendChild(tableWrapper);
 
-            };	
-            getEvangelists();
+        },false);    
 
-			var table2 = document.createElement("table");
-			table2.setAttribute("id", "tableEvanInput");
-			table2.setAttribute("class", "tableEvanInput");
-			table2.innerHTML += "<tr><td><input class='inputEvan' type='text' autocorrect='off' placeholder='Meno'>"
-			+ "</td><td><input class='inputEvan' type='email' autocorrect='off' placeholder='Email'></td><td>"
-			+ "<input class='inputEvan' type='text' autocorrect='off' placeholder='Zbor'></td><td><input class='inputEvan' type='password' autocorrect='off' placeholder='Heslo'>"
-			+ "</td><td id='btnholder'></td></tr>"; 
+document.getElementById("pridanie").addEventListener('click', function(){
 
-			var btnSubmit = document.createElement("button");
-			btnSubmit.setAttribute("class", "btnSubmit");			
-			btnSubmit.innerHTML = "PRIDAT";
+            var table = document.createElement("div");
+                table.setAttribute("id", "tableInputViet");
+                table.setAttribute("class", "tableInputViet");
+                
+                table.innerHTML += "<div class='row onerow'><div class='cell onecol'><span class='vietContent'>Meno:</span>"
+                + "</div><div class='cell onecol'><input class='inputViet' type='text' autocorrect='off' name='name'></div><div class='cell onecol'>"
+                + "<span class='vietContent'>Email:</span></div><div class='cell onecol'><input class='inputViet' type='email' autocorrect='off'>"
+                + "</div></div><div class='row onerow'><div class='cell onecol'><span class='vietContent'>Zbor:</span></div><div class='cell onecol'><input type='text' class='inputViet' autocorrect='off'></div><div class='cell onecol'><span class='vietContent'>Heslo:</span></div><div class='cell onecol'><input class='inputViet' autocorrect='off' type='password' name='password'></div></div><div class='row tworow'><div class='cell onecol'><span class='vietContent'>INFO:</span></div><div class='cell threecol'><textarea></textarea></div></div>"
+                + "<div class='row tworow'><div class='cell twocol'><img id='vietImg' src='/images/evangelists.png'></div><div class='cell twocol'><button type='submit' id='btnSave' class='btnVietSave'>ULOŽIŤ</button></div></div>";
+
+
 			function addUser(){
-					var dataUser = [], nodes = this.parentElement.parentElement.childNodes;		
-					for(var i=0; i<nodes.length; i++){				
-							dataUser.push(nodes[i].childNodes[0].value);
+					var dataUser = [], nodes = document.getElementsByTagName("input");		
+					for(var i=0; i<nodes.length; i++){	
+							dataUser.push(nodes[i].value);
 						}
-		//		 	if(MENU.flagInsert){
-		//		 		MENU.flagInsert = false;
 							 $.ajax({
 			                	 type: 'POST',
 			                	 url: "/?action=insert&n="+dataUser[0]+"&e="+dataUser[1]+"&z="+dataUser[2]+"&h="+dataUser[3],
@@ -353,73 +365,385 @@ var tableWrapper = document.createElement("div");
 			                	 success: function() {
 			                			  console.log("sent");
 			                			  MENU.flagInsert = false;
-			                			  getEvangelists("refresh");  
-			        //        		btnSubmit.removeEventListener("click", addUser, false); 
+
 			                		var littleMusic = document.getElementById("msc");
 			                		littleMusic.volume = 0.8;
 			                		littleMusic.loop = false;
 			                		littleMusic.play();              	
 			               		}      
 			        		});
-		//			}	
-
 			};
-			btnSubmit.addEventListener("click", addUser, false);
-			container.appendChild(table2);
-			document.getElementById("btnholder").appendChild(btnSubmit);
+            container.removeChild(container.childNodes[3]);
+            container.appendChild(table);
 
-var inputs = document.getElementsByTagName("input");
+            var checkInputUser = function(){
+                var inputs = container.getElementsByClassName("inputViet");
+                var count = 0;
+                for(var i = 0; i < inputs.length; i++){  
+                    if(inputs[i].name && inputs[i].value){                  
+                        count++;
+                    }
+                }
+                var save = document.getElementById("btnSave");
+                if(count == 2){                    
+                    save.className += " ok";
+                }else{
+                    save.className = "";         
+                    save.className = "btnVietSave";                    
+                }
+            }
 
-for(var i = 0; i < inputs.length; i++){
-	inputs[i].addEventListener("click", function(){
+            var inputs = document.getElementsByTagName("input");
+            for(var i = 0; i<inputs.length; i++){                 
+                if(inputs[i].name == "name" || inputs[i].name == "password"){
+                    inputs[i].addEventListener("blur",checkInputUser,false);
+                }
+            }
+			document.getElementById("btnSave").addEventListener("click", addUser, false);            
 
-var back, table;
-    if(mobileSuffix){ 
-		 	back = document.getElementById("btnBack");
-		 	table = document.getElementsByClassName("tablescroll")[0];    	   	
-        	
-    	var back = document.getElementById("btnBack");
-    	if(back){
-    		back.style.visibility = "hidden";
-    		table.style.visibility = "hidden";
-    	}
-
-		this.addEventListener("focusout",function(){
-			console.log("tu som");
-			back.style.visibility = "visible";
-		    table.style.visibility = "visible";
-		}, false);
-	}else if(back & table){
-			back.style.visibility = "visible";
-		    table.style.visibility = "visible";
-	}
-
-
-}, false);
-}
+            MENU.mobileKeyboardLayout();
 
 			var music = document.createElement("div");
 				music.innerHTML = "<audio id='msc' name='myMusic' loop='false' hidden='true' src='/multimedia/jmje.ogg'></audio>";
 			container.appendChild(music);
 
+},false);
+
+
 		MENU.back(container);
  	}, false);
 	})(),
-
+//*****************************************************************************************************
 	vietnamci : (function(){
+            var allMarkers = [];		
 			BUTTONS.btnViet.addEventListener("click", function(){	
 
-		// var container = document.getElementById("container");
-		// console.log(container.childNodes[1]);
-		// var temp = container.childNodes[1] + "";
-			container.innerHTML = "<div class='mobileImage'></div><span class='title'><h1>Vietnamci</h1></span><button class='btnBack' id='btnBack'></button>"
-		+ "";
- 
-	//	container.appendChild(temp);
+			var container = document.getElementById("container");		
+			container.innerHTML = "<div class='mobileImage'></div><span class='title'><h1>Vietnamci</h1></span><button class='btnBack' id='btnBack'></button>";
+			container.innerHTML += "<table class='table'><tbody><tr><td><button class='btnMain' id='zoznam'>ZOZNAM</button></td><td>"
+			 	 						+ "<button class='btnMain' id='pridanie'>PRIDANIE</button></td></tr><tr><td></td><td></td></tr><tr><td>"
+			 	 						+ "</td><td></td></tr></tbody></table>";
+
+            function addMarker(id, posLat, posLng, sex, flag, draggable){
+                           
+                                var icon = {
+                                    url: "/images/vietnamee_" + sex + "_head2.png",
+                                    cursor: 'default'                                                
+                                    };                                
+
+                                var position = new google.maps.LatLng(posLat - 0.005, posLng + 0.00098);
+                                    MENU.marker = new google.maps.Marker({
+                                    id: id,    
+                                    position: position,
+                                    icon: icon,
+                                    map: map,
+                                    draggable: draggable,
+                                    scaledSize: new google.maps.Size(1, 2)
+                                    });       
+                      
+               allMarkers.push(MENU.marker);                   
+            }
+
+			document.getElementById("zoznam").addEventListener('click', function(){
+                if(MENU.marker && MENU.marker.id && MENU.marker.id.indexOf("initial") == -1 && MENU.marker.id.indexOf("tempID") > -1) MENU.marker.setMap(null);
+                if(MENU.status){
+                    BUTTONS.btnObv.click();
+                    MENU.status = false;
+                }
+
+                var infoHover = function(e){                    
+                    if(this.tagName == "TD" && !this.childNodes[1]){
+                        var infoBubble = document.createElement("div");          
+                        infoBubble.innerHTML = this.alt;
+                        infoBubble.className = "bubbleInfo"; 
+                        infoBubble.style.top = e.clientY + "px";
+
+                        this.appendChild(infoBubble);
+
+                        this.addEventListener("mouseout",function(){
+                            if(this.childNodes[1] && infoBubble.parentElement) infoBubble.parentElement.removeChild(infoBubble);
+                        },false)
+                    }
+
+                    if(this.tagName == "TR"){
+                        var id = this.childNodes[0].innerHTML;
+                        var index = id.substring(id.indexOf("_")+1,id.length);
+                        var tempMarker = allMarkers[index-1];               
+                        tempMarker.setAnimation(google.maps.Animation.BOUNCE);
+
+                        this.addEventListener("mouseout",function(){
+                            tempMarker.setAnimation(null);
+                        },false);
+                    }
+                }
+
+				var tableWrapper = document.createElement("div");
+				tableWrapper.className = "tablescroll";
+				var table = document.createElement("table");
+				table.id = "tableViet";
+				table.setAttribute("cellspacing", 0);
+				table.innerHTML = "<thead><tr><th>OZNAČENIE</th><th>ULICA</th><th>POHLAVIE</th><th>VEK</th><th>INFO</th></tr></thead>";
+			
+				$.ajax({
+            	   url: '/?action=getVietnamese',
+            	   type: 'get',
+            	   dataType: 'json',
+            	   success: function(data){        
+                	   var tbody = document.createElement("tbody");
+                	   for(var i=0; i < data.length; i++){
+                    		var tr = document.createElement("tr");
+
+                            tr.addEventListener("mouseover",infoHover,false);
+                            tr.addEventListener("click",infoHover,false);
+
+                    		i === 0 ? tr.className ="first" : false;
+                    		var td1 = document.createElement("td");                		
+                    		td1.innerHTML = data[i].name;
+                    		var td2 = document.createElement("td");
+                    		td2.innerHTML = data[i].street;
+                    		var td3 = document.createElement("td");
+                    		td3.innerHTML = data[i].sex;
+                    		var td4 = document.createElement("td");
+                    		td4.innerHTML = data[i].age;
+                    		var td5 = document.createElement("td");
+                    		td5.innerHTML = "info";
+                            td5.style.color = "green";
+                            td5.style.cursor = "pointer";
+                            td5.alt = data[i].info;
+
+                            td5.addEventListener("mouseover",infoHover,false);
+                            td5.addEventListener("click",infoHover,false);
+
+                    		tr.appendChild(td1);
+                    		tr.appendChild(td2);
+                    		tr.appendChild(td3);
+                    		tr.appendChild(td4);
+                    		tr.appendChild(td5);
+                    		tbody.appendChild(tr);  
+                    		var sex = data[i].sex == "muz" ? "he" : "she";   
+
+                      if(allMarkers[i] && allMarkers[i].id != data[i].name && allMarkers[i].id != "id.."){                
+                    		addMarker(data[i].name, data[i].coords.lat, data[i].coords.lng, sex, "initial", false); 
+                            }else if(allMarkers[i] == undefined){
+                                addMarker(data[i].name, data[i].coords.lat, data[i].coords.lng, sex, "initial", false); 
+                            }
+                            info = data; 
+                	}
+                    var tfoot = document.createElement("tfoot");
+                    tfoot.innerHTML = "<tr><th>SPOLU:</th><th>" + data.length + "</th><th></th><th></th><th></th></tr>";
+                    table.appendChild(tbody);
+                    table.appendChild(tfoot);	
+                    tableInit(0.5);
+              
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown){
+                            console.log('error', errorThrown);
+                            }
+                });
+			     tableWrapper.appendChild(table);
+			     container.removeChild(container.childNodes[3]);
+			     container.appendChild(tableWrapper);
+
+//if(MENU.marker && MENU.marker.id && MENU.marker.id.indexOf("initial") == -1 && MENU.marker.id.indexOf("tempID") > -1) MENU.marker.setMap(null);
+			}, false);
+
+//***********************
+
+			 document.getElementById("pridanie").addEventListener('click', function(){				
+                if(MENU.marker && MENU.marker.id && MENU.marker.id.indexOf("id..") > -1) MENU.marker.setMap(null); 
+				if(allMarkers.length > 0 && allMarkers[allMarkers.length-1].id.indexOf("id..") > -1) allMarkers.pop(); 
+
+
+                if(MENU.status){
+					BUTTONS.btnObv.click();
+					MENU.status = false;
+				}
+
+				$.ajax({
+            		url: '/?action=getVietnamese',
+            		type: 'get',
+            		dataType: 'json',
+            		success: function(data){               		     
+                	    injectContent(data);     		
+                		}        
+                });		
+
+				function injectContent(data){
+					var form = document.createElement("form");	
+					form.setAttribute("method", "post");
+					var table = document.createElement("div");
+					table.setAttribute("id", "tableInputViet");
+					table.setAttribute("class", "tableInputViet");
+				
+                    table.innerHTML += "<div class='row onerow'><div class='cell onecol'><span class='vietContent'>Označenie:</span>"
+                    + "</div><div class='cell onecol'><input class='inputViet centerRed' autocorrect='off' name='name' value='XY_" + (data.length + 1) + "'></div><div class='cell onecol'>"
+                    + "<span class='vietContent'>Ulica:</span></div><div class='cell onecol'><input class='inputViet' autocorrect='off' name='street' id='street'>"
+                    + "</div></div><div class='row onerow'><div class='cell onecol'><span class='vietContent'>Pohlavie:</span></div><div class='cell onecol'><select class='inputViet' name='sex'><option value='muz'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muž</option>"
+                    + "<option value='zena'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;žena</option></select></div><div class='cell onecol'><span class='vietContent'>Vek:</span></div><div class='cell onecol'><select class='inputViet' name='age'><option value='mlady'>&nbsp;&nbsp;&nbsp;mladý</option>"
+                    + "<option value='stredny'>&nbsp;&nbsp;&nbsp;stredný</option><option value='starsi'>&nbsp;&nbsp;&nbsp;starši</option></select></div></div><div class='row tworow'><div class='cell onecol'><span class='vietContent'>INFO:</span></div><div class='cell threecol'><textarea placeholder='..napíš info napr. meno zvestovateľa, meno vietnamca, kedy si našiel..'></textarea></div></div>"
+                    + "<div class='row tworow'><div class='cell twocol'><img id='vietImg' class='tip' src='/images/vietnamee_he.png'></div><div class='cell twocol'><button type='submit' id='btnVietSave' class='btnVietSave'>ULOŽIŤ</button></div></div>";
+
+					form.appendChild(table);
+
+					container.removeChild(container.childNodes[3]);
+					container.appendChild(form);
+
+					var dataVietnamee = {};						
+					document.getElementById("btnVietSave").addEventListener("click", function(e){			
+						e.preventDefault();
+						var inputs = document.getElementsByClassName("inputViet");
+                        var infoTextArea = document.getElementsByTagName("textarea")[0]; 
+                        var saveButton = this;							
+
+						for(i in inputs){								
+							dataVietnamee[inputs[i].name] = inputs[i].value;
+						}
+                        dataVietnamee["info"] = infoTextArea.value;
+                        dataVietnamee["coords"] = {lat: MENU.marker.getPosition().lat() + 0.005, lng: MENU.marker.getPosition().lng() - 0.00098};
+                     
+                        MENU.marker.setDraggable(false);
+						  $.ajax({
+							type: 'POST',
+							url: "/?action=insertViet",			     
+							dataType: 'text',
+							data: JSON.stringify(dataVietnamee),
+							contentType: 'application/json',		       
+							success: function(){
+							    console.log("sent");
+
+                                var music = document.createElement("div");
+                                    music.innerHTML += "<audio name='myMusic' id='mscThanks' loop='false' hidden='true' src='/multimedia/Dakujem_Cam_dn.ogg'></audio>";
+                                    container.appendChild(music);
+
+                                var littleMusic = document.getElementById("mscThanks");
+                                    littleMusic.volume = 0.8;
+                                    littleMusic.loop = false;
+                                    littleMusic.play();  
+
+                                    saveButton.className = "";
+                                    saveButton.className = "btnVietSave";   
+						    }      
+						});  
+
+                        if(allMarkers[allMarkers.length-1].id.indexOf("id..") > -1) allMarkers.pop(); 
+                        if(MENU.marker.id.indexOf("id..") > -1) MENU.marker.id = "tempID"; 
+                        
+
+
+					}, false);
+
+                    sex = "he";
+					document.getElementsByTagName("select")[0].addEventListener("change", function(){								
+                        sex = this.value == "muz" ? "he" : "she";								
+						document.getElementById("vietImg").src = "/images/vietnamee_" + sex + ".png"; 
+					}, false);					
+                           
+                    var guide = function(text, X, Y){
+                        if(!document.getElementsByClassName("bubble")[0]){
+                            var bubble = document.createElement("div"); 
+                            bubble.innerHTML = text;
+                            bubble.setAttribute("class","bubble bubleEfect");
+                            var body = document.getElementsByTagName("body")[0];                                
+
+                            if(!document.getElementsByClassName("bubble")[0]){  
+                                         
+                                bubble.style.top = Math.round(X - 45) + "px";
+                                bubble.style.left = Math.round(Y + 45) + "px";
+
+                                body.appendChild(bubble);                                                                       
+                                var timeout = setTimeout(function() {body.removeChild(bubble)}, 5000);
+                            }else{
+                                       
+
+                                 }
+                        }                                    
+                    }
+                    MENU.mobileKeyboardLayout();
+
+                    var checkInput = function(){
+                        var inputStreet = document.getElementById("street");
+                        var save = document.getElementById("btnVietSave");  
+                          
+                        if(inputStreet.value && allMarkers.length > 0 && allMarkers[allMarkers.length-1].id.indexOf("id..") > -1){                            
+                            save.className += " ok";
+                        }else{
+                            save.className = "";
+                            save.className = "btnVietSave";
+                        }
+                    }
+                    document.getElementById("street").addEventListener("blur",checkInput,false); 
+                
+				    document.getElementById("vietImg").addEventListener("click", function(event){            
+                        var imgSrc = "url('/images/vietnamee_" + sex + "_cur.png'),auto";
+                        var vietnameeImg = this;     
+                        var body = document.getElementsByTagName("body")[0];            
+
+                        MENU.vietnameAdding = sex;
+                        document.getElementById("container").style.pointerEvents = "none";
+
+                        if(!mobileSuffix){       																    
+                            body.className = "";
+						    body.style.cursor = imgSrc;
+						    document.getElementById("map").style.cursor = imgSrc;                      
+                            vietnameeImg.style.visibility = "hidden";
+
+                            guide("Kliknutim na mapku ma umiestnis kde si ma nasiel..", event.clientY, event.clientX);  
+
+                        }else{
+
+                            guide("Tablet Klikni na mapku na miesto kde si ma našiel..", event.clientY, event.clientX);  
+
+                        }
+				    }, false);	
+
+				    google.maps.event.addListener(map, "click", function (e){	
+                        if(MENU.vietnameAdding.indexOf("initial") == -1 && MENU.vietnameAdding.indexOf("none") == -1){						    
+							MENU.vietnameAdding = "none";
+                        //    var vietnameeImg = document.getElementById("vietImg");
+						//	vietnameeImg.style.visibility = "initial";
+                        //    vietnameeImg.style.zIndex = 100;
+
+							 var latLng = e.latLng;							    						    
+							 dataVietnamee["coords"] = {lat: latLng.lat(), lng: latLng.lng()};
+			
+    							var mp = document.getElementById("map");
+                				var body = document.getElementsByTagName("body")[0];
+
+                				if(mp.className.indexOf("cursorGrab") == -1)
+    								mp.className += " cursorGrab";
+    							if(body.className.indexOf("cursorGrab") == -1)														
+    								body.className += " cursorGrab";	
+               
+                            document.getElementById("container").style.pointerEvents = "auto";                                   
+                            addMarker("id..", latLng.lat() + 0.005, latLng.lng()  - 0.00098, sex, false, true);
+                            checkInput();
+                        }                           
+				    });
+ 			
+				}
+			}, false);
 		MENU.back(container);
  	}, false);
-	})(),
 
+    if(!mobileSuffix){
+	   google.maps.event.addListener(map, 'mousemove', function(event){
+         				if(MENU.vietnameAdding.indexOf("he") > -1) {            				
+            				map.setOptions({ draggableCursor: 'url(/images/vietnamee_' + MENU.vietnameAdding + '_cur.png), move' });
+         					}else if(MENU.vietnameAdding != "initial"){
+            					map.setOptions({ draggableCursor: 'auto'});
+            					var mp = document.getElementById("map");
+            					var body = document.getElementsByTagName("body")[0]
+            					
+                					if(mp.className.indexOf("cursorGrab") == -1)
+                						mp.className += " cursorGrab";
+                					if(body.className.indexOf("cursorGrab") == -1)
+                						body.className += " cursorGrab";                                						
+         					}
+      					});		
+    }
+
+	})(),
+//*****************************************************************************************************
 	zaujemci : (function(){
 			BUTTONS.btnZauj.addEventListener("click", function(){	
 
@@ -427,9 +751,9 @@ var back, table;
 			container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1>Zaujemcovia</h1></span><button class='btnBack' id='btnBack'></button>"
 		+ "";
 		MENU.back(container);
- 	}, false);
+ 	  }, false);
 	})(),
-
+//*****************************************************************************************************
 	pokyny : (function(){
 			BUTTONS.btnPokn.addEventListener("click", function(){	
 
@@ -464,7 +788,7 @@ var back, table;
 		MENU.back(container);
  	}, false);
 	})(),
-
+//*****************************************************************************************************
 	smile : (function(){
 			BUTTONS.btnSmile.addEventListener("click", function(){	
 
@@ -487,7 +811,6 @@ var back, table;
 		var fileName, slov, viet, name = "";	
 
 		for(obj in vietPhrases[random]){
-			console.log(obj + " vietnamsky : " + vietPhrases[random][obj].viet + " file : " + vietPhrases[random][obj].name);
 			fileName = vietPhrases[random][obj].name;
 			slov = obj;
 			viet = vietPhrases[random][obj].viet;
@@ -508,7 +831,7 @@ var back, table;
 			MENU.back(container);
  		}, false);
 	})(),
-
+//*****************************************************************************************************
 	back : function(el){			
 			BUTTONS.btnBack().addEventListener("click", function(){
 			 	el.innerHTML = "<div class='mobileImage'></div><span class='title'><h1>Vietnamska aktivita</h1></span>";
@@ -539,8 +862,54 @@ var back, table;
 				 	table.appendChild(tr);
 			}
 		 	el.appendChild(table);
+
+            var bubble = document.getElementsByClassName("bubble ")[0];           
+            if(bubble) bubble.style.visibility = "hidden"; 
+
+            if(MENU.marker && MENU.marker.id && MENU.marker.id.indexOf("initial") == -1 && MENU.marker.id.indexOf("id..") > -1) MENU.marker.setMap(null);
 		}, false);
-	}
+	},
+
+    mobileKeyboardLayout : function(){
+        function changeLayout(input){
+            var tbl = document.getElementById("tableInputViet"); 
+            var rows = tbl.childNodes;
+            var row = input.parentElement.parentElement;
+            var img = document.getElementById("vietImg");
+
+            tbl.className += " tempInputTableShrink";
+            for(var i = 0; i < rows.length; i++){       
+                 if(rows[i] != row){               
+                    rows[i].className = "tempInputRemover";
+                }
+            }
+            if(img) img.className = "tempInputRemover";           
+            
+                input.addEventListener("blur",function(){                                                   
+                    rows[0].className = "row onerow";   
+                    rows[1].className = "row onerow"; 
+                    rows[2].className = "row tworow"; 
+                    rows[3].className = "row tworow";                          
+                    tbl.className = "";
+                    tbl.className = "tableInputViet";
+                    if(img) img.className = "initial";
+                }, false);
+        }
+
+                if(mobileSuffix){ 
+                    var inputs = document.getElementsByTagName("input");
+                    for(var i = 0; i < inputs.length; i++){
+                        inputs[i].addEventListener("click", function(){                             
+                            changeLayout(this);
+                        }, false);        
+                    }
+                    var textarea = document.getElementsByTagName("textarea")[0];
+                    textarea.addEventListener("click", function(){
+                        changeLayout(this);
+                    },false);
+                }      
+    }
+
 }
 
 }
@@ -563,6 +932,12 @@ var back, table;
 //-display / print block
 //-block numbers
 //
+//-add list in evangelist (like in vietnamese section) 
+//-add grabbig for adding vietnamese on mobile devices
+//-add head icon right after mouse click   FIXED
+//-add 
+//-layout
+//-add info about vietnamese when clicked on it
 //
 //
 //

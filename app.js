@@ -33,7 +33,7 @@ console.log(" MONGODB_URI " + process.env.MONGODB_URI);
 
 module.exports.getDB = function(){
 	//return mongojs(MONGODB_URI+'?authMechanism=SCRAM-SHA-1');
-	return mongojs('heroku_cn0nx3mh:ma03jjlbsft8eb62dmcode3eg1@ds033976.mlab.com/heroku_cn0nx3mh', {authMechanism: 'ScramSHA1'});
+	return mongojs('heroku_cn0nx3mh:ma03jjlbsft8eb62dmcode3eg1@ds033976.mlab.com/heroku_cn0nx3mh?authMechanism=SCRAM-SHA-1');
 };
 
 

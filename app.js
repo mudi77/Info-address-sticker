@@ -23,6 +23,8 @@ app.use('/static', express.static('/public'));
 		  console.log("nodeJs SERVER started..");
 		});
 
+console.log(" MONGODB_URI " + process.env.MONGODB_URI);
+
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/viet", 
     db,
     users;

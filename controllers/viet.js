@@ -6,7 +6,7 @@ var pjson = require("../package.json");
 //var cordDATA = coordinates.getData();
 var db = application.getDB();
 
-console.log("connected to db ::: " + db);
+//console.log("connected to db ::: " + db);
 
 // db.collection('coordinates').insert(coordinates.getData(), {}, function(){
 // 		console.log("db insert OK");

@@ -31,15 +31,14 @@ console.log(" MONGODB_URI " + process.env.MONGODB_URI);
 
 var MONGODB_URI = "mongodb://heroku_cn0nx3mh:ma03jjlbsft8eb62dmcode3eg1@ds033976.mlab.com:33976/heroku_cn0nx3mh";
 
-// module.exports.getDB = function(){
-// 	return mongojs(MONGODB_URI+'?authMechanism=SCRAM-SHA-1', ['coordinates']);
-// };
+module.exports.getDB = function(){
+	return mongojs(MONGODB_URI+'?authMechanism=SCRAM-SHA-1', ['coordinates']);
+};
 
-//var MongoDB = require('mongodb');
-//var uri = 'mongodb://user:pass@host:port/db';
-MongoDB.MongoClient.connect(MONGODB_URI, function (err, db) {
-    /* adventure! */
-});
+
+// MongoDB.MongoClient.connect(MONGODB_URI, function (err, db) {
+    
+// });
 
 var viet = require('./controllers/viet');
 

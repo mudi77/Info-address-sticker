@@ -21,10 +21,9 @@
 
 <div class="container" id="container">
 <div class='mobileImage' id="mob"></div>
-<!--<div id="mobile" style="height:1in; width:1in; left:100%; top: 100%; position: fixed"></div>-->
   <span class="title"><h1>{{title}}</h1></span> 
     <table class="table">
-      <tr><td><button class="btnMain" id="obv">OBVODY</button></td><td><button class="btnMain" id="zvs">ZVESTOVATELIA</button></td></tr>
+      <tr><td><button class="btnMain" id="obv">OBVODY</button></td><td><button class="btnMain" id="zvs">ZVESTOVATEĽ</button></td></tr>
       <tr><td><button class="btnMain" id="btnViet">VIETNAMCI</button></td><td><button class="btnMain" id="btnZauj">ZAUJEMCOVIA</button></td></tr>
       <tr><td><button class="btnMain" id="btnPokn">POKYNY</button></td><td><button class="btnMain" id="btnSmile">  
       </button></td></tr>

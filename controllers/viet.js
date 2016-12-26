@@ -59,13 +59,29 @@ module.exports = {
 							records = false;	
 							}else{records = false;}	
 				});	
-
 			}else if(req.query.action === "assign"){	
 					var user = JSON.parse(req.query.user);
 					var blockName = "Obvod_" + req.query.blockID;		
 					db.collection('coordinates').update({name: blockName}, {$set: {assigned_to : user.name, spec1 : req.query.date}}, function(){
 						res.status(200).send("OK");
 					});										
+			}else if(req.query.action === "getVietnamese"){
+				var data = db.collection('vietnamese').find({}).toArray(function(err, records){				
+					res.send(records);		
+				});
+
+
+			}else if(req.query.action === "insertViet"){
+					// console.log("tu sommmmm  " + Object.keys(req.body));
+					// console.log("tu sommmmm  " + req.body.age);		
+
+					db.collection('vietnamese').insert(req.body, function(){ 
+					//res.send(records);
+					res.status(200).send("OK");
+					});	
+
+				//	res.status(200).send("OK");
+
 			}else{
 				callback(req, res);
 			}

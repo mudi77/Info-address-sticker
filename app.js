@@ -14,10 +14,10 @@ var mongojs = require('mongojs');
 app.set('views', __dirname + '/templates');
 app.set('view engine', 'hjs');
 
+app.use(express.bodyParser());
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/static', express.static('/public'));
-
 
 		http.createServer(app).listen(process.env.PORT || 8080, function() {
 		  console.log("nodeJs SERVER started..");
@@ -37,5 +37,5 @@ app.get('/', function(req, res){
 		viet.run(req, res);		
 	});
 app.post('/', function(req, res){
-		viet.run(req, res);		
+		viet.run(req, res);				
 	});

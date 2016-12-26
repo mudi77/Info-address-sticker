@@ -1,6 +1,6 @@
 {
   "name": "viet",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "vietnamska aktivita",
   "main": "index.js",
   "scripts": {
@@ -10,9 +10,10 @@
   "author": "igor collak",
   "license": "ISC",
   "dependencies": {
+    "express": "3.2.6",
     "hjs": "0.0.4",
     "less-middleware": "0.1.12",
-      "mongodb": "*",
+    "mongodb": "*",
     "mongoose": "4.1.9"
   }
 }

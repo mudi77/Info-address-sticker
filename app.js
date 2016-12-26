@@ -33,7 +33,7 @@ var MONGODB_URI = "mongodb://heroku_cn0nx3mh:ma03jjlbsft8eb62dmcode3eg1@ds033976
 
 module.exports.getDB = function(){
 	//return mongojs(MONGODB_URI+'?authMechanism=SCRAM-SHA-1');
-	return mongojs('mongodb://heroku_cn0nx3mh:ma03jjlbsft8eb62dmcode3eg1@ds033976.mlab.com:33976/heroku_cn0nx3mh', ["coordinates"], {authMechanism: 'ScramSHA1'});
+	return mongojs('mongodb://igor:ma03jjlbsft8eb62dmcode3eg1@ds033976.mlab.com:33976/heroku_cn0nx3mh', ["coordinates"], {authMechanism: 'ScramSHA1'});
 };
 
 

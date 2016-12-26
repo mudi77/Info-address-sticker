@@ -650,8 +650,7 @@ document.getElementById("pridanie").addEventListener('click', function(){
 
                                 body.appendChild(bubble);                                                                       
                                 var timeout = setTimeout(function() {body.removeChild(bubble)}, 5000);
-                            }else{
-                                       
+                            }else{                                       
 
                                  }
                         }                                    
@@ -689,7 +688,7 @@ document.getElementById("pridanie").addEventListener('click', function(){
 
                         }else{
 
-                            guide("Tablet Klikni na mapku na miesto kde si ma našiel..", event.clientY, event.clientX);  
+                            guide("Klikni na mapku na miesto kde si ma našiel..", event.clientY, event.clientX);  
 
                         }
 				    }, false);	

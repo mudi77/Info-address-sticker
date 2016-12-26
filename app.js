@@ -32,7 +32,7 @@ console.log(" MONGODB_URI " + process.env.MONGODB_URI);
 var MONGODB_URI = "heroku_cn0nx3mh:ma03jjlbsft8eb62dmcode3eg1@ds033976.mlab.com:33976/heroku_cn0nx3mh";
 
 module.exports.getDB = function(){
-	return mongojs(MONGODB_URI+'?authMechanism=SCRAM-SHA-1', ['coordinates']);
+	return mongojs(MONGODB_URI+'?authMechanism=SCRAM-SHA-1');
 };
 
 

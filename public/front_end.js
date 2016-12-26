@@ -533,8 +533,7 @@ document.getElementById("pridanie").addEventListener('click', function(){
                     tfoot.innerHTML = "<tr><th>SPOLU:</th><th>" + data.length + "</th><th></th><th></th><th></th></tr>";
                     table.appendChild(tbody);
                     table.appendChild(tfoot);	
-                    tableInit(0.5);
-              
+                    tableInit(0.5);              
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown){
                             console.log('error', errorThrown);
@@ -552,7 +551,6 @@ document.getElementById("pridanie").addEventListener('click', function(){
 			 document.getElementById("pridanie").addEventListener('click', function(){				
                 if(MENU.marker && MENU.marker.id && MENU.marker.id.indexOf("id..") > -1) MENU.marker.setMap(null); 
 				if(allMarkers.length > 0 && allMarkers[allMarkers.length-1].id.indexOf("id..") > -1) allMarkers.pop(); 
-
 
                 if(MENU.status){
 					BUTTONS.btnObv.click();

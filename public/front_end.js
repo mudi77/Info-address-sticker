@@ -911,29 +911,40 @@ document.getElementById("pridanie").addEventListener('click', function(){
 
 }
 
+//COMMANDS
+//git add . 
+//git commit -m "meassage"
+//git push origin master
+//heroku config --app viet-akt
+//mongo ds033976.mlab.com:33976/heroku_cn0nx3mh -u <heroku_cn0nx3mh> -p <ma03jjlbsft8eb62dmcode3eg1>
+//heroku logs --app viet-akt
+//heroku restart --app viet-akt
+
 //********************  BUGS  **************************
-
-//add multimedia and pick them randomly :)
-
-//tilt after navigation doesn't display rotating device FIXED
-//-tilt to portrait in zvestovatelia displays table.. FIXED
-
-//-in smartphone is not show rotating device   FIXED
-//-in smartphone lauout is broken 	FIXED
-//- block at ALL smartphones 
-//- cross browser cross device layout in POKYNY !!!
-//- HOME button proportional !!!
+//-FIREFOX - inputs too much height
+//-FIREFOX - blocks information : name is not in bold
+//-Tablet CHROME - remove Home button when SW keyboard 
+//-Tablet CHROME - revert back table shrink once keyboard close
+//-Tablet CHROME - Home button is choppy not smooth 
+//-Tablet CHROME - improve leyout shrink in SW keyboard (border overlaps title background)
+//-Tablet CHROME - when button is pressed and finger moved little button square is displayed
+//-Tablet NATIVE - when button is pressed there is ALWAYS displayed a button square
+//-Tablet NATIVE - table adding cells are not centered vertically to middle
+//-Tablet NATIVE - table when input in focus change to square
+//-Tablet NATIVE - improve leyout shrink in SW keyboard (border overlaps title background)
+//-Tablet NATIVE - when SW keyboard is closed - table layout is not like original 
+//-Tablet NATIVE - when vietnamese image is clicked button square is displayed
+//-Tablet NATIVE - shrink layout needs to be implemented even when input selection !!
+//-Tablet NATIVE - in lists there is quite big font
+//-Tablet NATIVE - in list infohover off screen at right side
+//-Tablet NATIVE - 
 
 //********************* FEATURES ************************
-//-add vietnamiese 
+//
 //-display / print block
 //-block numbers
-//
-//-add list in evangelist (like in vietnamese section) 
-//-add grabbig for adding vietnamese on mobile devices
-//-add head icon right after mouse click   FIXED
-//-add 
-//-layout
+//-add EDIT(delete) feature
+//-add block in blocked mode once worked out
 //-add info about vietnamese when clicked on it
 //
 //

@@ -13,4 +13,4 @@ Info address sticker web app for managing general user info around locations
 
 ## Illustration 
 
-[![Sample of operation](https://img.youtube.com/vi/jkdGsmkgCew/0.jpg)](http://www.youtube.com/embed/jkdGsmkgCew)
+[![Sample of operation](http://viet-akt.herokuapp.com/)](http://viet-akt.herokuapp.com/)

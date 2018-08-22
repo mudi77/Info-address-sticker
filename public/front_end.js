@@ -21,7 +21,7 @@ var dpi_x = document.getElementById('mobile').offsetWidth;
 var dpi_y = document.getElementById('mobile').offsetHeight;
 var width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) / dpi_x;
 var height = (window.innerHeight || document.documentElement.clientHeight  || document.body.clientHeight) / dpi_y;
-//alert("device screen :: " + Math.round(width) + " x " + Math.round(height) + " sum :: " + Math.round(width) * Math.round(height));
+
 var blockDevice = (Math.round(width) * Math.round(height)) < 40 ? true : false;
 
 var body = document.getElementsByTagName("body")[0];
@@ -148,7 +148,7 @@ var MENU = {
                     var cordLength = (Object.keys(blockData[i]).length -7) / 2;
                     	name = blockData[i].name;  
                     	if(blockData[i].assigned_to === ""){          		
-							assignment = "neprideleny";
+							assignment = "yet unassigned";
 							color = "#46C646";
 							date = "";
                     		}else{
@@ -246,15 +246,12 @@ var MENU = {
 													 $.ajax({
                 	 								 type: 'POST',
                 	 								 url: "/?action=assign&user=" + JSON.stringify(userData[0]) + "&blockID=" + blockID + "&date=" + date,
-                	 						//		 data: userData,
-                	 						//		 dataType: "json",
+
                 	 								 success: function(){
 									var music = document.createElement("div");
 										music.innerHTML += "<audio id='mscOk' name='myMusic' loop='false' hidden='true' src='/multimedia/OK_Ok.ogg'></audio>";
 										document.getElementById("container").appendChild(music);
 
-
-                									 	console.log("sent");   
                 									 	var littleMusic = document.getElementById("mscOk");
 			                								littleMusic.volume = 0.8;
 			                								littleMusic.loop = false;

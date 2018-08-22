@@ -23,8 +23,8 @@
 <div class='mobileImage' id="mob"></div>
   <span class="title"><h1>{{title}}</h1></span> 
     <table class="table">
-      <tr><td><button class="btnMain" id="obv">OBVODY</button></td><td><button class="btnMain" id="zvs">ZVESTOVATEĽ</button></td></tr>
-      <tr><td><button class="btnMain" id="btnViet">VIETNAMCI</button></td><td><button class="btnMain" id="btnZauj">ZAUJEMCOVIA</button></td></tr>
+      <tr><td><button class="btnMain" id="obv">SHOW BLOCKS</button></td><td><button class="btnMain" id="zvs">ADD</button></td></tr>
+      <tr><td><button class="btnMain" id="btnViet">LIST2</button></td><td><button class="btnMain" id="btnZauj">LIST3</button></td></tr>
       <tr><td><button class="btnMain" id="btnPokn">POKYNY</button></td><td><button class="btnMain" id="btnSmile">  
       </button></td></tr>
     </table>

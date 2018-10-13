@@ -18,11 +18,11 @@ module.exports = {
 
 	actions : function(req, res, callback){
 			if(req.query.action === "getBlocks"){
-				var data = db.collection('coordinates').find({}).toArray(function(err, records){				
+				var data = db.collection('coordinates').find({}).toArray(function(err, records){			
 					res.send(records);		
 				});	
 			}else if(req.query.action === "getEvangelists"){
-				var data = db.collection('evangelists').find({}).toArray(function(err, records){				
+				var data = db.collection('evangelists').find({}).toArray(function(err, records){			
 					res.send(records);		
 				});	
 			}else if(req.query.action === "insert"){
@@ -33,7 +33,7 @@ module.exports = {
 				data.cong = req.query.z;
 				data.pass = req.query.h;
 				if(this.insert.indexOf(req.query.n) == -1){
-				db.collection('evangelists').insert(data, function(){ 
+					db.collection('evangelists').insert(data, function(){ 
 					res.status(200).send("OK");
 				});
 			}
@@ -52,7 +52,8 @@ module.exports = {
 			}else if(req.query.action === "assign"){	
 					var user = JSON.parse(req.query.user);
 					var blockName = "Obvod_" + req.query.blockID;		
-					db.collection('coordinates').update({name: blockName}, {$set: {assigned_to : user.name, spec1 : req.query.date}}, function(){
+					db.collection('coordinates').update(
+						{name: blockName}, {$set: {assigned_to : user.name, spec1 : req.query.date}}, function(){
 						res.status(200).send("OK");
 					});										
 			}else if(req.query.action === "getVietnamese"){
@@ -77,12 +78,12 @@ module.exports = {
 				var title = location = "";
 				switch(req.url){
 					case "viet" : location = "home";break;
-					case "/zvestovatelia" : location = "zvestovatelia"; title = "zvestovatelia"; console.log("tu switch " + location);break;
-					default : location = "home"; title = "test application";
+					case "/zvestovatelia" : location = "zvestovatelia"; title = "zvestovatelia";break;
+					default : location = "home"; title = "Cudzojazycna aktivita";
 				}
 				console.log(location + " " + title);
-				var v = new View(res, location);
-				v.render({ title: title, ver: pjson.version, layout: false });	
+				var view = new View(res, location);
+				view.render({ title: title, ver: pjson.version, layout: false });	
 	}
 
 }

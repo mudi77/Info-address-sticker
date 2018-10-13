@@ -1,7 +1,7 @@
 {
   "name": "testApp",
-  "version": "1.0.2",
-  "description": "testApp",
+  "version": "1.0.3",
+  "description": "Cudzojazycna aktivita",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",

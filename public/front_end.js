@@ -9,12 +9,12 @@ window.onload = function(){
 document.getElementsByClassName("loading")[0].style.display = "none";
 
 var refElement = document.createElement("div");
-refElement.setAttribute("id","mobile");
-refElement.style.height = "1in";
-refElement.style.width = "1in"; 
-refElement.style.left = "100%"; 
-refElement.style.top = "100%"; 
-refElement.style.position = "fixed"; 
+	refElement.setAttribute("id","mobile");
+	refElement.style.height = "1in";
+	refElement.style.width = "1in"; 
+	refElement.style.left = "100%"; 
+	refElement.style.top = "100%"; 
+	refElement.style.position = "fixed"; 
 document.getElementsByTagName("html")[0].appendChild(refElement);	
 
 var dpi_x = document.getElementById('mobile').offsetWidth;
@@ -25,8 +25,8 @@ var height = (window.innerHeight || document.documentElement.clientHeight  || do
 var blockDevice = (Math.round(width) * Math.round(height)) < 40 ? true : false;
 
 var body = document.getElementsByTagName("body")[0];
+
 if(blockDevice){
-	
 	body.setAttribute("class", "blockElement");
 	body.innerHTML = "<center><b>Xin lỗi   :(</b></center><br>NEPODPOROVANE ZARIADENIE... PREPACTE ALE OBSAH SA NEZOBRAZI.. skuste prosim tablet alebo PC  <b>;)</b>";
 }else{
@@ -37,13 +37,13 @@ if(blockDevice){
 
 function tableInit(inputHeight){
 
-var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-var height = window.innerHeight || document.documentElement.clientHeight  || document.body.clientHeight;
+	var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+	var height = window.innerHeight || document.documentElement.clientHeight  || document.body.clientHeight;
 
-var thisWidth = parseInt(width * 0.34);
-var thisHeight = parseInt(inputHeight * parseInt(height)); 
+	var thisWidth = parseInt(width * 0.34);
+	var thisHeight = parseInt(inputHeight * parseInt(height)); 
 
-$('#tableViet').tableScroll({width:thisWidth,height:thisHeight});
+	$('#tableViet').tableScroll({width:thisWidth,height:thisHeight});
 }
 
 function initMap() {
@@ -59,7 +59,7 @@ function initMap() {
         //     position: google.maps.ControlPosition.TOP_CENTER,
         //     drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
         //   },
-        //   markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
+        //   markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.svg'},
         //   circleOptions: {
         //     fillColor: '#ffff00',
         //     fillOpacity: 1,
@@ -136,131 +136,126 @@ var MENU = {
     marker : "initial",
 	obvody : (function(){
 		BUTTONS.btnObv.addEventListener("click", function(){
- if(MENU.status){
-	MENU.status = false;
-        $.ajax({
-            url: '/?action=getBlocks',
-            type: 'get',
-            dataType: 'json',
-            success: function(blockData){        
-                var named, assignment, date, color = info = notes = "";
-                for(var i = 0; i<blockData.length; i++){ 
-                    var cordLength = (Object.keys(blockData[i]).length -7) / 2;
-                    	name = blockData[i].name;  
-                    	if(blockData[i].assigned_to === ""){          		
-							assignment = "yet unassigned";
-							color = "#46C646";
-							date = "";
+ 			if(MENU.status){
+				MENU.status = false;
+        		$.ajax({
+            		url: '/?action=getBlocks',
+            		type: 'get',
+            		dataType: 'json',
+            		success: function(blockData){        
+                		var named, assignment, date, color = info = notes = "";
+                		for(var i = 0; i<blockData.length; i++){ 
+                    		var cordLength = (Object.keys(blockData[i]).length -7) / 2;
+                    		name = blockData[i].name;  
+                    		if(blockData[i].assigned_to === ""){          		
+								assignment = "yet unassigned";
+								color = "#46C646";
+								date = "";
                     		}else{
                     			assignment = "<strong>"+blockData[i].assigned_to+"</strong>";
                     			date = blockData[i].spec1;                    		
                     			color = "yellow";
                     		}         
                      	
-                    var block = [], n = 0;                                            		
-                        for(var key in blockData[i]){
+                    		var block = [], n = 0;                                            		
+                        	for(var key in blockData[i]){
                         	
-                        	if(key.indexOf("l") == 0){
-                        		var lat = blockData[i]["lat" + n];
-                        		var lng = blockData[i]["lng" + n];                        
+                        		if(key.indexOf("l") == 0){
+                        			var lat = blockData[i]["lat" + n];
+                        			var lng = blockData[i]["lng" + n];                        
                        
-                        		var obj = new google.maps.LatLng(lat, lng);
-                        		block.push(obj);
-                        		if(n  === cordLength-1){break;}else{n++;}
+                        			var obj = new google.maps.LatLng(lat, lng);
+                        			block.push(obj);
+                        			if(n  === cordLength-1){break;}else{n++;}
+                        		}
                         	}
-                        }
                      		
-                        var tempPolygon = new google.maps.Polygon({
-							paths: block,
-							draggable: false, 
-							editable: false,
-							strokeColor: '#585858',
-							strokeOpacity: 0.8,
-							strokeWeight: 2,
-							fillColor: color,
-							fillOpacity: 0.5
-						});
+                        	var tempPolygon = new google.maps.Polygon({
+								paths: block,
+								draggable: false, 
+								editable: false,
+								strokeColor: '#585858',
+								strokeOpacity: 0.8,
+								strokeWeight: 2,
+								fillColor: color,
+								fillOpacity: 0.5
+							});
                          
- 					tempPolygon.setMap(map); 
- 					var temp, flag = true;
- 					google.maps.event.addListener(tempPolygon,"mouseover",function(){
- 						this.setOptions({fillOpacity: 0.35, strokeWeight: 4, strokeColor: 'black'});
- 	                        if(MENU.vietnameAdding.indexOf("he") > -1){                            
-                                if(this != temp){                                    
-                                    this.setMap(null);
-                                    if(temp)
-                                       temp.setMap(map);
-                            }	                            			
-                            temp = this;           						
- 						}                        
-					});						
+ 							tempPolygon.setMap(map); 
+ 							var temp, flag = true;
+ 							google.maps.event.addListener(tempPolygon,"mouseover",function(){
+ 								this.setOptions({fillOpacity: 0.35, strokeWeight: 4, strokeColor: 'black'});
+ 	                        	if(MENU.vietnameAdding.indexOf("he") > -1){                            
+                                	if(this != temp){                                    
+                                    	this.setMap(null);
+                                    	if(temp) temp.setMap(map);
+                            		}	                            			
+                            		temp = this;           						
+ 								}                        
+							});						
 
-					google.maps.event.addListener(tempPolygon,"mouseout",function(){
- 						this.setOptions({fillOpacity: 0.5, strokeWeight: 2, strokeColor: '#585858'}); 			
-					});					
+							google.maps.event.addListener(tempPolygon,"mouseout",function(){
+ 								this.setOptions({fillOpacity: 0.5, strokeWeight: 2, strokeColor: '#585858'}); 			
+							});					
 					
-					var infoWindowMarkup = "<strong>OBVOD " + name.split("_")[1] + "</strong><br><br>Status : " 
+							var infoWindowMarkup = "<strong>OBVOD " + name.split("_")[1] + "</strong><br><br>Status : " 
 										 + assignment + "<br>Datum : " + date + "<br>Info : " + info 
 										 + "<br>Poznamky : " + notes + "<br><br><input id='pswdInput' class='pswdInput' placeholder='heslo'>"
 										 + "</input>&nbsp;<button id='assgnBtn' disabled='true' class='assgnButton'>PRIDELIT</button>";
 
 				
-					var prev_infowindow = false; 
-					(function(){
-						var infowindow = new google.maps.InfoWindow({
-          					content: infoWindowMarkup
-        					}); 
-						google.maps.event.addListener(tempPolygon,"click",function(event){ 
-							if(prev_infowindow)	{
-							prev_infowindow.close();
-							}	
-							prev_infowindow = infowindow;									
- 							infowindow.setPosition(event.latLng);
- 							infowindow.open(map);
+							var prev_infowindow = false; 
+							(function(){
+								var infowindow = new google.maps.InfoWindow({
+          							content: infoWindowMarkup
+        						}); 
+							google.maps.event.addListener(tempPolygon,"click",function(event){ 
+								if(prev_infowindow)	{
+									prev_infowindow.close();
+								}	
+								prev_infowindow = infowindow;									
+ 								infowindow.setPosition(event.latLng);
+ 								infowindow.open(map);
 
- 							var tempUser = "";
- 							document.getElementById("pswdInput").addEventListener("keyup", function(){
+ 								var tempUser = "";
+ 								document.getElementById("pswdInput").addEventListener("keyup", function(){
  								
- 								if(this.value.length >= 4){ 								
- 									
- 									if(this.value.indexOf(tempUser.substring(0, 3)) != -1){
+ 									if(this.value.length >= 4){								
+ 										if(this.value.indexOf(tempUser.substring(0, 3)) != -1){
  							
- 									$.ajax({
-            							url: '/?action=getUser&usrpwd=' + this.value,
-            							type: 'get',
-            							dataType: 'json',
-            							success: function(userData){            								
-            								
+ 										$.ajax({
+            								url: '/?action=getUser&usrpwd=' + this.value,
+            								type: 'get',
+            								dataType: 'json',
+            								success: function(userData){            								
             									tempUser = userData[0].name;           							
-            								var assignmentBtn = document.getElementById("assgnBtn");
-            							    	assignmentBtn.disabled = false;
-            							    	assignmentBtn.style.backgroundColor = "#4CAF50";
-            							    	assignmentBtn.style.cursor = "pointer";
-
-            							    	assignmentBtn.addEventListener("click", function(el){
-												prev_infowindow.close();												
+            									var assignmentBtn = document.getElementById("assgnBtn");
+            							    		assignmentBtn.disabled = false;
+            							    		assignmentBtn.style.backgroundColor = "#4CAF50";
+            							    		assignmentBtn.style.cursor = "pointer";
+            							    		assignmentBtn.addEventListener("click", function(el){
+														prev_infowindow.close();												
 							
-											var blockID = this.parentElement.getElementsByTagName("strong")[0].innerHTML.split(" ")[1];
-											var date = new Date();
-												date = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
-													 $.ajax({
-                	 								 type: 'POST',
-                	 								 url: "/?action=assign&user=" + JSON.stringify(userData[0]) + "&blockID=" + blockID + "&date=" + date,
+												var blockID = this.parentElement.getElementsByTagName("strong")[0].innerHTML.split(" ")[1];
+												var date = new Date();
+													date = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
+												$.ajax({
+                	 								type: 'POST',
+                	 								url: "/?action=assign&user=" + JSON.stringify(userData[0]) + "&blockID=" + blockID + "&date=" + date,
+                	 								success: function(){
+														var music = document.createElement("div");
+															music.innerHTML += "<audio id='mscOk' name='myMusic' loop='false' hidden='true' src='/multimedia/OK_Ok.ogg'></audio>";
+															document.getElementById("container").appendChild(music);
 
-                	 								 success: function(){
-									var music = document.createElement("div");
-										music.innerHTML += "<audio id='mscOk' name='myMusic' loop='false' hidden='true' src='/multimedia/OK_Ok.ogg'></audio>";
-										document.getElementById("container").appendChild(music);
-
-                									 	var littleMusic = document.getElementById("mscOk");
-			                								littleMusic.volume = 0.8;
-			                								littleMusic.loop = false;
-			                								littleMusic.play();                 									 	            		
-               													},
-               										 error: function(XMLHttpRequest, textStatus, errorThrown){
+                											var littleMusic = document.getElementById("mscOk");
+			                									littleMusic.volume = 0.8;
+			                									littleMusic.loop = false;
+			                									littleMusic.play();                			            		
+               										},
+               										error: function(XMLHttpRequest, textStatus, errorThrown){
                             							console.log('error', errorThrown);
-                           										}			
-        											});													
+                           							}			
+        										});													
 												}, false);
             							    		console.log(" user id " + userData[0].name + " block ");					    	
                            						},
@@ -290,44 +285,44 @@ var MENU = {
 //*****************************************************************************************************
 	zvestovatelia : (function(){
 			BUTTONS.btnZvest.addEventListener("click", function(){					
-		var container = document.getElementById("container");
-			container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1>Zvestovatelia</h1></span><button class='btnBack' id='btnBack'></button>";
-			container.innerHTML += "<table class='table'><tbody><tr><td><button class='btnMain' id='zoznam'>ZOZNAM</button></td><td>"
+				var container = document.getElementById("container");
+					container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1>Zvestovatelia</h1></span><button class='btnBack' id='btnBack'></button>";
+					container.innerHTML += "<table class='table'><tbody><tr><td><button class='btnMain' id='zoznam'>ZOZNAM</button></td><td>"
                                         + "<button class='btnMain' id='pridanie'>PRIDANIE</button></td></tr><tr><td></td><td></td></tr><tr><td>"
                                         + "</td><td></td></tr></tbody></table>";		
 
-        document.getElementById("zoznam").addEventListener('click', function(){                                
-            var tableWrapper = document.createElement("div");
-		      tableWrapper.className = "tablescroll";
-		      var table1 = document.createElement("table");
-		      table1.id = "tableViet";
-		      table1.setAttribute("cellspacing", 0);
-		      table1.innerHTML = "<thead><tr><th>MENO</th><th>EMAIL</th><th>ZBOR</th></tr></thead>";
+        		document.getElementById("zoznam").addEventListener('click', function(){                                
+            	var tableWrapper = document.createElement("div");
+		      	tableWrapper.className = "tablescroll";
+		      	var table1 = document.createElement("table");
+		      		table1.id = "tableViet";
+		      		table1.setAttribute("cellspacing", 0);
+		      		table1.innerHTML = "<thead><tr><th>MENO</th><th>EMAIL</th><th>ZBOR</th></tr></thead>";
 
-		      $.ajax({
-                url: '/?action=getEvangelists',
-                type: 'get',
-                dataType: 'json',
-                success: function(data){        
-                	var tbody = document.createElement("tbody");
-                	for(var i=0; i < data.length; i++){
-                		var tr = document.createElement("tr");
-                		i === 0 ? tr.className ="first" : false;
-                		var td1 = document.createElement("td");                		
-                		td1.innerHTML = data[i].name;
-                		var td2 = document.createElement("td");
-                		td2.innerHTML = data[i].email;
-                		var td3 = document.createElement("td");
-                		td3.innerHTML = data[i].cong;
-                		tr.appendChild(td1);
-                		tr.appendChild(td2);
-                		tr.appendChild(td3);
-                		tbody.appendChild(tr);                		
-                	}
-                    table1.appendChild(tbody);	
-                    tableInit(0.5);
-                },
-            error: function(XMLHttpRequest, textStatus, errorThrown){
+		      	$.ajax({
+                	url: '/?action=getEvangelists',
+                	type: 'get',
+                	dataType: 'json',
+                	success: function(data){        
+                		var tbody = document.createElement("tbody");
+                		for(var i=0; i < data.length; i++){
+                			var tr = document.createElement("tr");
+                			i === 0 ? tr.className ="first" : false;
+                			var td1 = document.createElement("td");                		
+                				td1.innerHTML = data[i].name;
+                			var td2 = document.createElement("td");
+                				td2.innerHTML = data[i].email;
+                			var td3 = document.createElement("td");
+                				td3.innerHTML = data[i].cong;
+                			tr.appendChild(td1);
+                			tr.appendChild(td2);
+                			tr.appendChild(td3);
+                			tbody.appendChild(tr);                		
+                		}
+                    	table1.appendChild(tbody);	
+                    	tableInit(0.5);
+                	},
+            	error: function(XMLHttpRequest, textStatus, errorThrown){
                     console.log('error', errorThrown);
                 }
             });			
@@ -337,8 +332,7 @@ var MENU = {
 
         },false);    
 
-document.getElementById("pridanie").addEventListener('click', function(){
-
+		document.getElementById("pridanie").addEventListener('click', function(){
             var table = document.createElement("div");
                 table.setAttribute("id", "tableInputViet");
                 table.setAttribute("class", "tableInputViet");
@@ -397,7 +391,6 @@ document.getElementById("pridanie").addEventListener('click', function(){
                 }
             }
 			document.getElementById("btnSave").addEventListener("click", addUser, false);            
-
             MENU.mobileKeyboardLayout();
 
 			var music = document.createElement("div");
@@ -416,33 +409,33 @@ document.getElementById("pridanie").addEventListener('click', function(){
 			BUTTONS.btnViet.addEventListener("click", function(){	
 
 			var container = document.getElementById("container");		
-			container.innerHTML = "<div class='mobileImage'></div><span class='title'><h1>Vietnamci</h1></span><button class='btnBack' id='btnBack'></button>";
-			container.innerHTML += "<table class='table'><tbody><tr><td><button class='btnMain' id='zoznam'>ZOZNAM</button></td><td>"
+				container.innerHTML = "<div class='mobileImage'></div><span class='title'><h1>Nasli sme v obvode</h1></span><button class='btnBack' id='btnBack'></button>";
+				container.innerHTML += "<table class='table'><tbody><tr><td><button class='btnMain' id='zoznam'>ZOZNAM</button></td><td>"
 			 	 						+ "<button class='btnMain' id='pridanie'>PRIDANIE</button></td></tr><tr><td></td><td></td></tr><tr><td>"
 			 	 						+ "</td><td></td></tr></tbody></table>";
 
             function addMarker(id, posLat, posLng, sex, flag, draggable){
-                           
-                                var icon = {
-                                    url: "/images/vietnamee_" + sex + "_head2.png",
-                                    cursor: 'default'                                                
-                                    };                                
+                var icon = {
+                    url: "/images/user_" + sex + "_head.svg",
+					cursor: 'default',
+					scaledSize: new google.maps.Size(30, 30)                    
+                };                                
 
-                                var position = new google.maps.LatLng(posLat - 0.005, posLng + 0.00098);
-                                    MENU.marker = new google.maps.Marker({
-                                    id: id,    
-                                    position: position,
-                                    icon: icon,
-                                    map: map,
-                                    draggable: draggable,
-                                    scaledSize: new google.maps.Size(1, 2)
-                                    });       
+                var position = new google.maps.LatLng(posLat - 0.005, posLng + 0.00098);
+                MENU.marker = new google.maps.Marker({
+                    id: id,    
+                    position: position,
+                    icon: icon,
+                    map: map,
+                    draggable: draggable,
+                    scaledSize: new google.maps.Size(1, 2)
+                });       
                       
                allMarkers.push(MENU.marker);                   
             }
 
 			document.getElementById("zoznam").addEventListener('click', function(){
-                if(MENU.marker && MENU.marker.id && MENU.marker.id.indexOf("initial") == -1 && MENU.marker.id.indexOf("tempID") > -1) MENU.marker.setMap(null);
+                if(MENU.marker && MENU.marker.id && MENU.marker.id.indexOf("initial") == -1 && MENU.marker.id.indexOf("tempID") > -1) 	MENU.marker.setMap(null);
                 if(MENU.status){
                     BUTTONS.btnObv.click();
                     MENU.status = false;
@@ -475,11 +468,11 @@ document.getElementById("pridanie").addEventListener('click', function(){
                 }
 
 				var tableWrapper = document.createElement("div");
-				tableWrapper.className = "tablescroll";
+					tableWrapper.className = "tablescroll";
 				var table = document.createElement("table");
-				table.id = "tableViet";
-				table.setAttribute("cellspacing", 0);
-				table.innerHTML = "<thead><tr><th>OZNAČENIE</th><th>ULICA</th><th>POHLAVIE</th><th>VEK</th><th>INFO</th></tr></thead>";
+					table.id = "tableViet";
+					table.setAttribute("cellspacing", 0);
+					table.innerHTML = "<thead><tr><th>OZNAČENIE</th><th>ULICA</th><th>POHLAVIE</th><th>VEK</th><th>INFO</th></tr></thead>";
 			
 				$.ajax({
             	   url: '/?action=getVietnamese',
@@ -519,12 +512,12 @@ document.getElementById("pridanie").addEventListener('click', function(){
                     		tbody.appendChild(tr);  
                     		var sex = data[i].sex == "muz" ? "he" : "she";   
 
-                      if(allMarkers[i] && allMarkers[i].id != data[i].name && allMarkers[i].id != "id.."){                
+                      	if(allMarkers[i] && allMarkers[i].id != data[i].name && allMarkers[i].id != "id.."){                
                     		addMarker(data[i].name, data[i].coords.lat, data[i].coords.lng, sex, "initial", false); 
-                            }else if(allMarkers[i] == undefined){
-                                addMarker(data[i].name, data[i].coords.lat, data[i].coords.lng, sex, "initial", false); 
-                            }
-                            info = data; 
+                        }else if(allMarkers[i] == undefined){
+                            addMarker(data[i].name, data[i].coords.lat, data[i].coords.lng, sex, "initial", false); 
+                        }
+                        info = data; 
                 	}
                     var tfoot = document.createElement("tfoot");
                     tfoot.innerHTML = "<tr><th>SPOLU:</th><th>" + data.length + "</th><th></th><th></th><th></th></tr>";
@@ -533,19 +526,19 @@ document.getElementById("pridanie").addEventListener('click', function(){
                     tableInit(0.5);              
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown){
-                            console.log('error', errorThrown);
-                            }
-                });
-			     tableWrapper.appendChild(table);
-			     container.removeChild(container.childNodes[3]);
-			     container.appendChild(tableWrapper);
+                    console.log('error', errorThrown);
+                }
+            });
+			tableWrapper.appendChild(table);
+			container.removeChild(container.childNodes[3]);
+			container.appendChild(tableWrapper);
 
 //if(MENU.marker && MENU.marker.id && MENU.marker.id.indexOf("initial") == -1 && MENU.marker.id.indexOf("tempID") > -1) MENU.marker.setMap(null);
 			}, false);
 
 //***********************
 
-			 document.getElementById("pridanie").addEventListener('click', function(){				
+			document.getElementById("pridanie").addEventListener('click', function(){				
                 if(MENU.marker && MENU.marker.id && MENU.marker.id.indexOf("id..") > -1) MENU.marker.setMap(null); 
 				if(allMarkers.length > 0 && allMarkers[allMarkers.length-1].id.indexOf("id..") > -1) allMarkers.pop(); 
 
@@ -573,10 +566,10 @@ document.getElementById("pridanie").addEventListener('click', function(){
                     table.innerHTML += "<div class='row onerow'><div class='cell onecol'><span class='vietContent'>Označenie:</span>"
                     + "</div><div class='cell onecol'><input class='inputViet centerRed' autocorrect='off' name='name' value='XY_" + (data.length + 1) + "'></div><div class='cell onecol'>"
                     + "<span class='vietContent'>Ulica:</span></div><div class='cell onecol'><input class='inputViet' autocorrect='off' name='street' id='street'>"
-                    + "</div></div><div class='row onerow'><div class='cell onecol'><span class='vietContent'>Pohlavie:</span></div><div class='cell onecol'><select class='inputViet' name='sex'><option value='muz'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muž</option>"
-                    + "<option value='zena'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;žena</option></select></div><div class='cell onecol'><span class='vietContent'>Vek:</span></div><div class='cell onecol'><select class='inputViet' name='age'><option value='mlady'>&nbsp;&nbsp;&nbsp;mladý</option>"
-                    + "<option value='stredny'>&nbsp;&nbsp;&nbsp;stredný</option><option value='starsi'>&nbsp;&nbsp;&nbsp;starši</option></select></div></div><div class='row tworow'><div class='cell onecol'><span class='vietContent'>INFO:</span></div><div class='cell threecol'><textarea placeholder='..napíš info napr. meno zvestovateľa, meno vietnamca, kedy si našiel..'></textarea></div></div>"
-                    + "<div class='row tworow'><div class='cell twocol'><img id='vietImg' class='tip' src='/images/vietnamee_he.png'></div><div class='cell twocol'><button type='submit' id='btnVietSave' class='btnVietSave'>ULOŽIŤ</button></div></div>";
+                    + "</div></div><div class='row onerow'><div class='cell onecol'><span class='vietContent'>Pohlavie:</span></div><div class='cell onecol'><select class='inputViet' name='sex'><option value='muž'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;muž</option>"
+                    + "<option value='žena'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;žena</option></select></div><div class='cell onecol'><span class='vietContent'>Vek:</span></div><div class='cell onecol'><select class='inputViet' name='age'><option value='mlady'>&nbsp;&nbsp;&nbsp;mladý</option>"
+                    + "<option value='stredny'>&nbsp;&nbsp;&nbsp;stredný</option><option value='starsi'>&nbsp;&nbsp;&nbsp;starši</option></select></div></div><div class='row tworow'><div class='cell onecol'><span class='vietContent'>INFO:</span></div><div class='cell threecol'><textarea placeholder='..napíš info napr. meno zvestovateľa, kedy si našiel..'></textarea></div></div>"
+                    + "<div class='row tworow'><div class='cell twocol'><img id='vietImg' class='tip' src='/images/user_he.svg'></div><div class='cell twocol'><button type='submit' id='btnVietSave' class='btnVietSave'>ULOŽIŤ</button></div></div>";
 
 					form.appendChild(table);
 
@@ -623,14 +616,12 @@ document.getElementById("pridanie").addEventListener('click', function(){
                         if(allMarkers[allMarkers.length-1].id.indexOf("id..") > -1) allMarkers.pop(); 
                         if(MENU.marker.id.indexOf("id..") > -1) MENU.marker.id = "tempID"; 
                         
-
-
 					}, false);
 
                     sex = "he";
 					document.getElementsByTagName("select")[0].addEventListener("change", function(){								
                         sex = this.value == "muz" ? "he" : "she";								
-						document.getElementById("vietImg").src = "/images/vietnamee_" + sex + ".png"; 
+						document.getElementById("vietImg").src = "/images/user_" + sex + ".svg"; 
 					}, false);					
                            
                     var guide = function(text, X, Y){
@@ -666,9 +657,8 @@ document.getElementById("pridanie").addEventListener('click', function(){
                         }
                     }
                     document.getElementById("street").addEventListener("blur",checkInput,false); 
-                
 				    document.getElementById("vietImg").addEventListener("click", function(event){            
-                        var imgSrc = "url('/images/vietnamee_" + sex + "_cur.png'),auto";
+                        var imgSrc = "url('/images/user_" + sex + "_small.png'),auto";
                         var vietnameeImg = this;     
                         var body = document.getElementsByTagName("body")[0];            
 
@@ -679,7 +669,9 @@ document.getElementById("pridanie").addEventListener('click', function(){
                             body.className = "";
 						    body.style.cursor = imgSrc;
 						    document.getElementById("map").style.cursor = imgSrc;                      
-                            vietnameeImg.style.visibility = "hidden";
+							vietnameeImg.style.visibility = "hidden";
+							
+
 
                             guide("Kliknutim na mapku ma umiestnis kde si ma nasiel..", event.clientY, event.clientX);  
 
@@ -697,49 +689,48 @@ document.getElementById("pridanie").addEventListener('click', function(){
 						//	vietnameeImg.style.visibility = "initial";
                         //    vietnameeImg.style.zIndex = 100;
 
-							 var latLng = e.latLng;							    						    
-							 dataVietnamee["coords"] = {lat: latLng.lat(), lng: latLng.lng()};
+							var latLng = e.latLng;							    						    
+							dataVietnamee["coords"] = {lat: latLng.lat(), lng: latLng.lng()};
 			
-    							var mp = document.getElementById("map");
-                				var body = document.getElementsByTagName("body")[0];
+    						var mp = document.getElementById("map");
+                			var body = document.getElementsByTagName("body")[0];
 
-                				if(mp.className.indexOf("cursorGrab") == -1)
-    								mp.className += " cursorGrab";
-    							if(body.className.indexOf("cursorGrab") == -1)														
-    								body.className += " cursorGrab";	
+                			if(mp.className.indexOf("cursorGrab") == -1)
+    							mp.className += " cursorGrab";
+    						if(body.className.indexOf("cursorGrab") == -1)														
+    							body.className += " cursorGrab";	
                
                             document.getElementById("container").style.pointerEvents = "auto";                                   
                             addMarker("id..", latLng.lat() + 0.005, latLng.lng()  - 0.00098, sex, false, true);
                             checkInput();
                         }                           
 				    });
- 			
 				}
 			}, false);
 		MENU.back(container);
  	}, false);
 
     if(!mobileSuffix){
-	   google.maps.event.addListener(map, 'mousemove', function(event){
-         				if(MENU.vietnameAdding.indexOf("he") > -1) {            				
-            				map.setOptions({ draggableCursor: 'url(/images/vietnamee_' + MENU.vietnameAdding + '_cur.png), move' });
-         					}else if(MENU.vietnameAdding != "initial"){
-            					map.setOptions({ draggableCursor: 'auto'});
-            					var mp = document.getElementById("map");
-            					var body = document.getElementsByTagName("body")[0]
+	   	google.maps.event.addListener(map, 'mousemove', function(event){
+         	if(MENU.vietnameAdding.indexOf("he") > -1) {            				
+            	map.setOptions({ draggableCursor: 'url(/images/user_' + MENU.vietnameAdding + '_small.png), move' });
+         	}else if(MENU.vietnameAdding != "initial"){
+            	map.setOptions({ draggableCursor: 'auto'});
+            	var mp = document.getElementById("map");
+            	var body = document.getElementsByTagName("body")[0]
             					
-                					if(mp.className.indexOf("cursorGrab") == -1)
-                						mp.className += " cursorGrab";
-                					if(body.className.indexOf("cursorGrab") == -1)
-                						body.className += " cursorGrab";                                						
-         					}
-      					});		
+                if(mp.className.indexOf("cursorGrab") == -1)
+                	mp.className += " cursorGrab";
+                if(body.className.indexOf("cursorGrab") == -1)
+                	body.className += " cursorGrab";                                						
+         	}
+      	});		
     }
 
 	})(),
 //*****************************************************************************************************
 	zaujemci : (function(){
-			BUTTONS.btnZauj.addEventListener("click", function(){	
+		BUTTONS.btnZauj.addEventListener("click", function(){	
 
 		var container = document.getElementById("container")
 			container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1>Zaujemcovia</h1></span><button class='btnBack' id='btnBack'></button>"
@@ -749,7 +740,7 @@ document.getElementById("pridanie").addEventListener('click', function(){
 	})(),
 //*****************************************************************************************************
 	pokyny : (function(){
-			BUTTONS.btnPokn.addEventListener("click", function(){	
+		BUTTONS.btnPokn.addEventListener("click", function(){	
 
 		var container = document.getElementById("container");
 			container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1>Pokyny</h1></span><button class='btnBack' id='btnBack'></button>";
@@ -757,10 +748,10 @@ document.getElementById("pridanie").addEventListener('click', function(){
 		var pokynyTableWrapper = document.createElement("div");	
 			pokynyTableWrapper.className = "pokynyTableWrapper" + mobileSuffix;
 
-		var uvod = "<strong>Vietnamska aktivita</strong> - velka prilezitost najst milych ludi, ktori su ochotni pocuvat biblicku pravdu :) + ucast"
+		var uvod = "<strong>Cudzojazycna aktivita</strong> - velka prilezitost najst milych ludi, ktori su ochotni pocuvat biblicku pravdu :) + ucast"
 				 + " na zaujimavej a povzbudzujucej forme sluzby";
 
-		var obvody = "<strong>Obvody</strong> - je tu 80 obvodov ide o prve rozdelenie obvodov mozno sa casom ukaze ze bude treba niektore rozdelit "
+		var obvody = "<strong>Obvody</strong> - je tu 80 obvodov ide o prve rozdelenie obvodov mozno sa casom ukaze ze bude treba 	niektore rozdelit "
 				   + "alebo spojit myslienka bola taka aby v ramci obvodu bolo priblizne rovnaky pocet bytov, niektore obvody su aj v priemyselnych "
 				   + "alebo okrajovych castiach Kosic. Hranice obvodov by mali byt v zhode s ulicami avsak nie kazdy obvod je tak ohraniceny.. "
 				   + "Kedze je potrebne prepracovat cele Kosice prosim vyberajte obvody mestske aj tie odlahle.. ";
@@ -787,7 +778,7 @@ document.getElementById("pridanie").addEventListener('click', function(){
 			BUTTONS.btnSmile.addEventListener("click", function(){	
 
 			var container = document.getElementById("container")
-			container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1> :) </h1></span><button class='btnBack' id='btnBack'></button>"
+				container.innerHTML ="<div class='mobileImage'></div><span class='title'><h1> :) </h1></span><button class='btnBack' id='btnBack'></button>"
 			+ "";
 
 			var vietPhrases = [{"Ahoj":{"viet":"Chao","name":"Ahoj_Chao"}},
@@ -801,19 +792,19 @@ document.getElementById("pridanie").addEventListener('click', function(){
 							   {"Prepacte":{"viet":"Xin loi","name":"Prepacte_Xin_loi"}},
 							   {"Prosim":{"viet":"Khong co gi","name":"Prosim_Khong_co_gi"}}];
 
-		var random = Date.now().toString().substring(12,13);
-		var fileName, slov, viet, name = "";	
+			var random = Date.now().toString().substring(12,13);
+			var fileName, slov, viet, name = "";	
 
-		for(obj in vietPhrases[random]){
-			fileName = vietPhrases[random][obj].name;
-			slov = obj;
-			viet = vietPhrases[random][obj].viet;
-			name = vietPhrases[random][obj].name;
-		}
+			for(obj in vietPhrases[random]){
+				fileName = vietPhrases[random][obj].name;
+				slov = obj;
+				viet = vietPhrases[random][obj].viet;
+				name = vietPhrases[random][obj].name;
+			}
 
-		container.innerHTML += "<pre><h2>" + slov + ":</h2>   <h3>'" + viet + "'</h3></pre>";
+			container.innerHTML += "<pre><h2>" + slov + ":</h2>   <h3>'" + viet + "'</h3></pre>";
 
-				var music = document.createElement("div");
+			var music = document.createElement("div");
 				music.innerHTML = "<audio id='msc' name='myMusic' loop='false' hidden='true' src='/multimedia/" + name + ".ogg'></audio>";
 			container.appendChild(music);
 			var littleMusic = document.getElementById("msc");
@@ -821,14 +812,13 @@ document.getElementById("pridanie").addEventListener('click', function(){
 			                		littleMusic.loop = false;
 			                		littleMusic.play();      
 
-
 			MENU.back(container);
  		}, false);
 	})(),
 //*****************************************************************************************************
 	back : function(el){			
 			BUTTONS.btnBack().addEventListener("click", function(){
-			 	el.innerHTML = "<div class='mobileImage'></div><span class='title'><h1>Vietnamska aktivita</h1></span>";
+			 	el.innerHTML = "<div class='mobileImage'></div><span class='title'><h1>Cudzojazycna aktivita</h1></span>";
 			 	var table = document.createElement("table");
 			 	 	table.className = "table";
 			 	for(var i = 1; i<=3; i++){
@@ -853,7 +843,7 @@ document.getElementById("pridanie").addEventListener('click', function(){
 				 		td2.appendChild(BUTTONS.btnSmile);
 				 		tr.appendChild(td2);
 				 	}
-				 	table.appendChild(tr);
+				table.appendChild(tr);
 			}
 		 	el.appendChild(table);
 
@@ -890,18 +880,18 @@ document.getElementById("pridanie").addEventListener('click', function(){
                 }, false);
         }
 
-                if(mobileSuffix){ 
-                    var inputs = document.getElementsByTagName("input");
-                    for(var i = 0; i < inputs.length; i++){
-                        inputs[i].addEventListener("click", function(){                             
-                            changeLayout(this);
-                        }, false);        
-                    }
-                    var textarea = document.getElementsByTagName("textarea")[0];
-                    textarea.addEventListener("click", function(){
-                        changeLayout(this);
-                    },false);
-                }      
+        if(mobileSuffix){ 
+            var inputs = document.getElementsByTagName("input");
+            for(var i = 0; i < inputs.length; i++){
+                inputs[i].addEventListener("click", function(){                             
+                    changeLayout(this);
+                }, false);        
+            }
+            var textarea = document.getElementsByTagName("textarea")[0];
+                textarea.addEventListener("click", function(){
+                    changeLayout(this);
+                },false);
+        }      
     }
 
 }

@@ -16,18 +16,28 @@ app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/static', express.static('/public'));
 
-		http.createServer(app).listen(process.env.PORT || 8080, function() {
+		http.createServer(app).listen(process.env.PORT || 8081, function() {
 		  console.log("nodeJs SERVER started..");
 		});
 
-console.log(" MONGODB_URI " + process.env.MONGODB_URI);
 
 var db = "viet";
 
- var MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/viet", 
-     db,
-     users;
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/viet";
+//     db,
+//	 users;
+	 
+// var mongodbHost = '127.0.0.1';
+// var mongodbPort = '27017';
+// var mongodbHost = '@ds033976.mlab.com';
+// var mongodbPort = '33976';
+// var authenticate = 'igor:Lienocka1';
+// var mongodbDatabase = 'heroku_cn0nx3mh';
 
+// var MONGODB_URI = 'mongodb://'+authenticate+mongodbHost+':'+mongodbPort + '/' + mongodbDatabase;
+
+
+console.log(" MONGODB_URI " + process.env.MONGODB_URI);
 
 module.exports.getDB = function(){
 	console.log(" url : " + MONGODB_URI);
